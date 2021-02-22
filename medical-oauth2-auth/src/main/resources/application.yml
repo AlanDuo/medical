@@ -1,0 +1,32 @@
+server:
+  port: 9401
+spring:
+  profiles:
+    active: dev
+  application:
+    name: micro-oauth2-auth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.113.184.197:8848
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver              # mysql驱动包
+    url: jdbc:mysql://localhost:3306/medical?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=utf-8&nullCatalogMeansCurrent=true
+    username: root
+    password: lhd021412
+  redis:
+    database: 0
+    port: 6379
+    host: 47.113.184.197
+    password: 123456
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.lhd.auth.entities    # 所有Entity别名类所在包
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,36 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: medical-provider-shop
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.113.184.197:8848
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/medical?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=utf-8&nullCatalogMeansCurrent=true
+    username: root
+    password: lhd021412
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60000
+      cache-null-values: false
+  redis:
+    database: 0
+    port: 6379
+    host: 47.113.184.197
+    password: 123456
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
