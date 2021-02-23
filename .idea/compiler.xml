@@ -13,6 +13,7 @@
         <module name="medical-provider-shop9001" />
         <module name="medical-oauth2-auth" />
         <module name="medical-oauth2-api" />
+        <module name="medical-provider-user9010" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

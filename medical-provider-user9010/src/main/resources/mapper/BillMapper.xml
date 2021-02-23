@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lhd.user.dao.BillMapper" >
+  <resultMap id="BaseResultMap" type="com.lhd.user.entities.Bill" >
+    <id column="bill_id" property="billId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="purpose" property="purpose" jdbcType="VARCHAR" />
+    <result column="int_or_out" property="intOrOut" jdbcType="TINYINT" />
+    <result column="bill_time" property="billTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    bill_id, user_id, money, purpose, int_or_out, bill_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lhd.user.entities.BillExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from bill
+    where bill_id = #{billId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from bill
+    where bill_id = #{billId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lhd.user.entities.BillExample" >
+    delete from bill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lhd.user.entities.Bill" >
+    insert into bill (bill_id, user_id, money, 
+      purpose, int_or_out, bill_time
+      )
+    values (#{billId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{money,jdbcType=DECIMAL}, 
+      #{purpose,jdbcType=VARCHAR}, #{intOrOut,jdbcType=TINYINT}, #{billTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lhd.user.entities.Bill" >
+    insert into bill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="billId != null" >
+        bill_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="purpose != null" >
+        purpose,
+      </if>
+      <if test="intOrOut != null" >
+        int_or_out,
+      </if>
+      <if test="billTime != null" >
+        bill_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="billId != null" >
+        #{billId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="purpose != null" >
+        #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="intOrOut != null" >
+        #{intOrOut,jdbcType=TINYINT},
+      </if>
+      <if test="billTime != null" >
+        #{billTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lhd.user.entities.BillExample" resultType="java.lang.Integer" >
+    select count(*) from bill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bill
+    <set >
+      <if test="record.billId != null" >
+        bill_id = #{record.billId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.money != null" >
+        money = #{record.money,jdbcType=DECIMAL},
+      </if>
+      <if test="record.purpose != null" >
+        purpose = #{record.purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intOrOut != null" >
+        int_or_out = #{record.intOrOut,jdbcType=TINYINT},
+      </if>
+      <if test="record.billTime != null" >
+        bill_time = #{record.billTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bill
+    set bill_id = #{record.billId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      money = #{record.money,jdbcType=DECIMAL},
+      purpose = #{record.purpose,jdbcType=VARCHAR},
+      int_or_out = #{record.intOrOut,jdbcType=TINYINT},
+      bill_time = #{record.billTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhd.user.entities.Bill" >
+    update bill
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="purpose != null" >
+        purpose = #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="intOrOut != null" >
+        int_or_out = #{intOrOut,jdbcType=TINYINT},
+      </if>
+      <if test="billTime != null" >
+        bill_time = #{billTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where bill_id = #{billId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhd.user.entities.Bill" >
+    update bill
+    set user_id = #{userId,jdbcType=BIGINT},
+      money = #{money,jdbcType=DECIMAL},
+      purpose = #{purpose,jdbcType=VARCHAR},
+      int_or_out = #{intOrOut,jdbcType=TINYINT},
+      bill_time = #{billTime,jdbcType=TIMESTAMP}
+    where bill_id = #{billId,jdbcType=BIGINT}
+  </update>
+</mapper>

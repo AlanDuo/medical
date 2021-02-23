@@ -15,6 +15,7 @@
         <module>medical-provider-shop9001</module>
         <module>medical-provider-shop9002</module>
         <module>medical-consumer-shop8001</module>
+        <module>medical-provider-user9010</module>
     </modules>
     <packaging>pom</packaging>
 
