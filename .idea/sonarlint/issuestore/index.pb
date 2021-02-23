@@ -127,3 +127,15 @@ Mmedical-consumer-shop8001/src/main/java/com/lhd/shop/common/ResponseData.java,
 Mmedical-provider-shop9001/src/main/java/com/lhd/shop/common/ResponseData.java,5\2\52f18943218e9499b937961baf5c843e2998a24b
 á
 Wmedical-provider-shop9002/src/main/java/com/lhd/shop/service/impl/GoodsServiceImpl.java,7\f\7fde932f35d5274345f5b1a62f26b624b3d5f367
+w
+Gmedical-provider-shop9001/src/main/java/com/lhd/shop/vo/ShopCartVO.java,8\4\842ba975f3e297a21f43749900c203a0fcf57226
+u
+Emedical-provider-shop9001/src/main/java/com/lhd/shop/dto/UserDTO.java,a\c\acb9b1f277257cb2b605022732bc07d869dd04e7
+Å
+Qmedical-provider-shop9001/src/main/java/com/lhd/shop/handler/LoginUserHolder.java,c\3\c3b279f0cc2ee3c1f6732907ae54572830d3829a
+á
+Wmedical-provider-shop9001/src/main/java/com/lhd/shop/controller/ShopCartController.java,5\b\5b6a84db4196f3911dae3ad1bed28b8bc9e32d96
+Å
+Qmedical-provider-shop9001/src/main/java/com/lhd/shop/service/ShopCartService.java,9\1\910d0aabbb4bc3f19b6810f33bb4b7c885ff76fa
+ä
+Zmedical-provider-shop9001/src/main/java/com/lhd/shop/service/impl/ShopCartServiceImpl.java,3\f\3f37dd5fd1c76533fbbfbd885a8045e8b7f9ebb1
