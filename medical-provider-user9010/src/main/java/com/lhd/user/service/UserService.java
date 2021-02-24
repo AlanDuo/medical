@@ -12,7 +12,4 @@ import java.util.List;
  */
 public interface UserService {
     User getUserById(Long userId);
-    BigDecimal getUserWallet(Long userId);
-    List<Bill> getUserBill(Long userId);
-    boolean chargeWallet(Long userId,BigDecimal money,String purpose);
 }

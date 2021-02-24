@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lhd.user.dao.HealthRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.lhd.user.entities.HealthRecord" >
+    <id column="record_id" property="recordId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="relationship" property="relationship" jdbcType="VARCHAR" />
+    <result column="diagnosis_name" property="diagnosisName" jdbcType="VARCHAR" />
+    <result column="in_time" property="inTime" jdbcType="DATE" />
+    <result column="out_time" property="outTime" jdbcType="DATE" />
+    <result column="prescription" property="prescription" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="visit_hospital" property="visitHospital" jdbcType="VARCHAR" />
+    <result column="treatment_dept" property="treatmentDept" jdbcType="VARCHAR" />
+    <result column="doctor" property="doctor" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    record_id, user_id, relationship, diagnosis_name, in_time, out_time, prescription, 
+    remarks, visit_hospital, treatment_dept, doctor, phone
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lhd.user.entities.HealthRecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from health_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from health_record
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from health_record
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lhd.user.entities.HealthRecordExample" >
+    delete from health_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lhd.user.entities.HealthRecord" >
+    insert into health_record (record_id, user_id, relationship, 
+      diagnosis_name, in_time, out_time, 
+      prescription, remarks, visit_hospital, 
+      treatment_dept, doctor, phone
+      )
+    values (#{recordId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{relationship,jdbcType=VARCHAR}, 
+      #{diagnosisName,jdbcType=VARCHAR}, #{inTime,jdbcType=DATE}, #{outTime,jdbcType=DATE}, 
+      #{prescription,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{visitHospital,jdbcType=VARCHAR}, 
+      #{treatmentDept,jdbcType=VARCHAR}, #{doctor,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lhd.user.entities.HealthRecord" >
+    insert into health_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        record_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="relationship != null" >
+        relationship,
+      </if>
+      <if test="diagnosisName != null" >
+        diagnosis_name,
+      </if>
+      <if test="inTime != null" >
+        in_time,
+      </if>
+      <if test="outTime != null" >
+        out_time,
+      </if>
+      <if test="prescription != null" >
+        prescription,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="visitHospital != null" >
+        visit_hospital,
+      </if>
+      <if test="treatmentDept != null" >
+        treatment_dept,
+      </if>
+      <if test="doctor != null" >
+        doctor,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="relationship != null" >
+        #{relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosisName != null" >
+        #{diagnosisName,jdbcType=VARCHAR},
+      </if>
+      <if test="inTime != null" >
+        #{inTime,jdbcType=DATE},
+      </if>
+      <if test="outTime != null" >
+        #{outTime,jdbcType=DATE},
+      </if>
+      <if test="prescription != null" >
+        #{prescription,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="visitHospital != null" >
+        #{visitHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentDept != null" >
+        #{treatmentDept,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor != null" >
+        #{doctor,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lhd.user.entities.HealthRecordExample" resultType="java.lang.Integer" >
+    select count(*) from health_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update health_record
+    <set >
+      <if test="record.recordId != null" >
+        record_id = #{record.recordId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.relationship != null" >
+        relationship = #{record.relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diagnosisName != null" >
+        diagnosis_name = #{record.diagnosisName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inTime != null" >
+        in_time = #{record.inTime,jdbcType=DATE},
+      </if>
+      <if test="record.outTime != null" >
+        out_time = #{record.outTime,jdbcType=DATE},
+      </if>
+      <if test="record.prescription != null" >
+        prescription = #{record.prescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.visitHospital != null" >
+        visit_hospital = #{record.visitHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="record.treatmentDept != null" >
+        treatment_dept = #{record.treatmentDept,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctor != null" >
+        doctor = #{record.doctor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update health_record
+    set record_id = #{record.recordId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      relationship = #{record.relationship,jdbcType=VARCHAR},
+      diagnosis_name = #{record.diagnosisName,jdbcType=VARCHAR},
+      in_time = #{record.inTime,jdbcType=DATE},
+      out_time = #{record.outTime,jdbcType=DATE},
+      prescription = #{record.prescription,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      visit_hospital = #{record.visitHospital,jdbcType=VARCHAR},
+      treatment_dept = #{record.treatmentDept,jdbcType=VARCHAR},
+      doctor = #{record.doctor,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhd.user.entities.HealthRecord" >
+    update health_record
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="relationship != null" >
+        relationship = #{relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosisName != null" >
+        diagnosis_name = #{diagnosisName,jdbcType=VARCHAR},
+      </if>
+      <if test="inTime != null" >
+        in_time = #{inTime,jdbcType=DATE},
+      </if>
+      <if test="outTime != null" >
+        out_time = #{outTime,jdbcType=DATE},
+      </if>
+      <if test="prescription != null" >
+        prescription = #{prescription,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="visitHospital != null" >
+        visit_hospital = #{visitHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentDept != null" >
+        treatment_dept = #{treatmentDept,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor != null" >
+        doctor = #{doctor,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhd.user.entities.HealthRecord" >
+    update health_record
+    set user_id = #{userId,jdbcType=BIGINT},
+      relationship = #{relationship,jdbcType=VARCHAR},
+      diagnosis_name = #{diagnosisName,jdbcType=VARCHAR},
+      in_time = #{inTime,jdbcType=DATE},
+      out_time = #{outTime,jdbcType=DATE},
+      prescription = #{prescription,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      visit_hospital = #{visitHospital,jdbcType=VARCHAR},
+      treatment_dept = #{treatmentDept,jdbcType=VARCHAR},
+      doctor = #{doctor,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR}
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </update>
+</mapper>

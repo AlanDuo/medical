@@ -36,22 +36,4 @@ public class UserController {
         User user=userService.getUserById(userDTO.getId());
         return ResponseData.ok().putDataValue(user);
     }
-    @GetMapping("/wallet")
-    public ResponseData userWallet(){
-        UserDTO userDTO=loginUserHolder.getCurrentUser();
-        BigDecimal wallet=userService.getUserWallet(userDTO.getId());
-        return ResponseData.ok().putDataValue(wallet);
-    }
-    @GetMapping("/bill")
-    public ResponseData userBill(){
-        UserDTO userDTO=loginUserHolder.getCurrentUser();
-        List<Bill> billList=userService.getUserBill(userDTO.getId());
-        return ResponseData.ok().putDataValue(billList);
-    }
-    @PostMapping("/chargeWallet")
-    public ResponseData chargeWallet(BigDecimal money,String purpose){
-        UserDTO userDTO=loginUserHolder.getCurrentUser();
-        userService.chargeWallet(userDTO.getId(),money,purpose);
-        return ResponseData.ok();
-    }
 }

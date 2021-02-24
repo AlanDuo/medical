@@ -1,0 +1,23 @@
+
+_
+java:S1192´"HDefine a constant instead of duplicating this literal "userId" 10 times.(Ý§‰ 
+c
+java:S1192x"HDefine a constant instead of duplicating this literal "billId" 10 times.(Êº›¢øÿÿÿÿ
+`
+java:S1192ò"JDefine a constant instead of duplicating this literal "intOrOut" 10 times.(þÝ“6
+a
+java:S1192®"JDefine a constant instead of duplicating this literal "billTime" 10 times.(Çý¡˜
+`
+java:S1192¬"IDefine a constant instead of duplicating this literal "purpose" 12 times.(ìø°Í
+c
+java:S1192ð"GDefine a constant instead of duplicating this literal "money" 10 times.(ƒå«…ÿÿÿÿÿ
+`	java:S112Z"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
+`	java:S112a"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºþÿÿÿÿ
+Z	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
+
+v
+java:S1488:"`Immediately return this expression instead of assigning it to the temporary variable "criteria".(¶Õ¯ì
+n
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÏßÉe
+o
+java:S2293I"YReplace the type specification in this constructor call with the diamond operator ("<>").(óÎ³Ù
