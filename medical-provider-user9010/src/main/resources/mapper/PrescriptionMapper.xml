@@ -4,6 +4,8 @@
   <resultMap id="BaseResultMap" type="com.lhd.user.entities.Prescription" >
     <id column="prescription_id" property="prescriptionId" jdbcType="BIGINT" />
     <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="doctor_id" property="doctorId" jdbcType="BIGINT" />
     <result column="diagnosis_result" property="diagnosisResult" jdbcType="VARCHAR" />
     <result column="rp" property="rp" jdbcType="VARCHAR" />
   </resultMap>
@@ -66,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    prescription_id, order_id, diagnosis_result, rp
+    prescription_id, order_id, user_id, doctor_id, diagnosis_result, rp
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lhd.user.entities.PrescriptionExample" >
     select
@@ -99,10 +101,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lhd.user.entities.Prescription" >
-    insert into prescription (prescription_id, order_id, diagnosis_result, 
-      rp)
-    values (#{prescriptionId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{diagnosisResult,jdbcType=VARCHAR}, 
-      #{rp,jdbcType=VARCHAR})
+    insert into prescription (prescription_id, order_id, user_id, 
+      doctor_id, diagnosis_result, rp
+      )
+    values (#{prescriptionId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{doctorId,jdbcType=BIGINT}, #{diagnosisResult,jdbcType=VARCHAR}, #{rp,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lhd.user.entities.Prescription" >
     insert into prescription
@@ -112,6 +116,12 @@
       </if>
       <if test="orderId != null" >
         order_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="doctorId != null" >
+        doctor_id,
       </if>
       <if test="diagnosisResult != null" >
         diagnosis_result,
@@ -126,6 +136,12 @@
       </if>
       <if test="orderId != null" >
         #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="doctorId != null" >
+        #{doctorId,jdbcType=BIGINT},
       </if>
       <if test="diagnosisResult != null" >
         #{diagnosisResult,jdbcType=VARCHAR},
@@ -150,6 +166,12 @@
       <if test="record.orderId != null" >
         order_id = #{record.orderId,jdbcType=BIGINT},
       </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.doctorId != null" >
+        doctor_id = #{record.doctorId,jdbcType=BIGINT},
+      </if>
       <if test="record.diagnosisResult != null" >
         diagnosis_result = #{record.diagnosisResult,jdbcType=VARCHAR},
       </if>
@@ -165,6 +187,8 @@
     update prescription
     set prescription_id = #{record.prescriptionId,jdbcType=BIGINT},
       order_id = #{record.orderId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      doctor_id = #{record.doctorId,jdbcType=BIGINT},
       diagnosis_result = #{record.diagnosisResult,jdbcType=VARCHAR},
       rp = #{record.rp,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -176,6 +200,12 @@
     <set >
       <if test="orderId != null" >
         order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="doctorId != null" >
+        doctor_id = #{doctorId,jdbcType=BIGINT},
       </if>
       <if test="diagnosisResult != null" >
         diagnosis_result = #{diagnosisResult,jdbcType=VARCHAR},
@@ -189,6 +219,8 @@
   <update id="updateByPrimaryKey" parameterType="com.lhd.user.entities.Prescription" >
     update prescription
     set order_id = #{orderId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      doctor_id = #{doctorId,jdbcType=BIGINT},
       diagnosis_result = #{diagnosisResult,jdbcType=VARCHAR},
       rp = #{rp,jdbcType=VARCHAR}
     where prescription_id = #{prescriptionId,jdbcType=BIGINT}

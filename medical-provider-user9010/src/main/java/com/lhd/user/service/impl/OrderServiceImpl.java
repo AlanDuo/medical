@@ -4,6 +4,7 @@ import com.lhd.user.dao.*;
 import com.lhd.user.entities.*;
 import com.lhd.user.service.OrderService;
 import com.lhd.user.vo.ConsultationOrderListVO;
+import com.lhd.user.vo.PrescriptionVO;
 import com.lhd.user.vo.ShopOrderListVO;
 import com.lhd.user.vo.ShopOrderVO;
 import org.springframework.beans.BeanUtils;
@@ -79,7 +80,34 @@ public class OrderServiceImpl implements OrderService {
         orderExample.setOrderByClause("order_time DESC");
         ConsultationOrderExample.Criteria orderCriteria=orderExample.createCriteria();
         orderCriteria.andPatientIdEqualTo(userId);
+        List<ConsultationOrder> consultationOrderList=consultationOrderMapper.selectByExample(orderExample);
+        List<ConsultationOrderListVO> orderListVOList=new ArrayList<>();
+        for(ConsultationOrder order:consultationOrderList){
+            ConsultationOrderListVO orderListVO=new ConsultationOrderListVO();
+            BeanUtils.copyProperties(order,orderListVO);
+            Doctor doctor=doctorMapper.selectByPrimaryKey(order.getDoctorId());
+            BeanUtils.copyProperties(doctor,orderListVO);
+            User user=userMapper.selectByPrimaryKey(order.getPatientId());
+            BeanUtils.copyProperties(user,orderListVO);
+            Prescription prescription=prescriptionMapper.selectByPrimaryKey(order.getOrderId());
+            BeanUtils.copyProperties(prescription,orderListVO);
+            orderListVOList.add(orderListVO);
+        }
+        return orderListVOList;
+    }
 
-        return null;
+    @Override
+    public PrescriptionVO getPrescriptionOfOrder(Long orderId) {
+        PrescriptionExample prescriptionExample=new PrescriptionExample();
+        PrescriptionExample.Criteria prescriptionCriteria=prescriptionExample.createCriteria();
+        prescriptionCriteria.andOrderIdEqualTo(orderId);
+        List<Prescription> prescriptions=prescriptionMapper.selectByExample(prescriptionExample);
+        if(prescriptions.size()==0){
+            return null;
+        }
+        PrescriptionVO prescriptionVO=new PrescriptionVO();
+        BeanUtils.copyProperties(prescriptions.get(0),prescriptionVO);
+
+        return prescriptionVO;
     }
 }

@@ -224,6 +224,126 @@ public class PrescriptionExample {
             return (Criteria) this;
         }
 
+        public Criteria andUserIdIsNull() {
+            addCriterion("user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdEqualTo(Long value) {
+            addCriterion("user_id =", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotEqualTo(Long value) {
+            addCriterion("user_id <>", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThan(Long value) {
+            addCriterion("user_id >", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("user_id >=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThan(Long value) {
+            addCriterion("user_id <", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThanOrEqualTo(Long value) {
+            addCriterion("user_id <=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIn(List<Long> values) {
+            addCriterion("user_id in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotIn(List<Long> values) {
+            addCriterion("user_id not in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdBetween(Long value1, Long value2) {
+            addCriterion("user_id between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotBetween(Long value1, Long value2) {
+            addCriterion("user_id not between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdIsNull() {
+            addCriterion("doctor_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdIsNotNull() {
+            addCriterion("doctor_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdEqualTo(Long value) {
+            addCriterion("doctor_id =", value, "doctorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdNotEqualTo(Long value) {
+            addCriterion("doctor_id <>", value, "doctorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdGreaterThan(Long value) {
+            addCriterion("doctor_id >", value, "doctorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("doctor_id >=", value, "doctorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdLessThan(Long value) {
+            addCriterion("doctor_id <", value, "doctorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdLessThanOrEqualTo(Long value) {
+            addCriterion("doctor_id <=", value, "doctorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdIn(List<Long> values) {
+            addCriterion("doctor_id in", values, "doctorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdNotIn(List<Long> values) {
+            addCriterion("doctor_id not in", values, "doctorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdBetween(Long value1, Long value2) {
+            addCriterion("doctor_id between", value1, value2, "doctorId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorIdNotBetween(Long value1, Long value2) {
+            addCriterion("doctor_id not between", value1, value2, "doctorId");
+            return (Criteria) this;
+        }
+
         public Criteria andDiagnosisResultIsNull() {
             addCriterion("diagnosis_result is null");
             return (Criteria) this;

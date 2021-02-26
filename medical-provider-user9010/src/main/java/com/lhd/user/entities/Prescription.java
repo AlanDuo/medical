@@ -5,6 +5,10 @@ public class Prescription {
 
     private Long orderId;
 
+    private Long userId;
+
+    private Long doctorId;
+
     private String diagnosisResult;
 
     private String rp;
@@ -23,6 +27,22 @@ public class Prescription {
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
     public String getDiagnosisResult() {

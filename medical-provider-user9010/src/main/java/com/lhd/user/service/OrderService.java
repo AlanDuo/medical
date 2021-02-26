@@ -1,6 +1,7 @@
 package com.lhd.user.service;
 
 import com.lhd.user.vo.ConsultationOrderListVO;
+import com.lhd.user.vo.PrescriptionVO;
 import com.lhd.user.vo.ShopOrderListVO;
 import com.lhd.user.vo.ShopOrderVO;
 
@@ -14,5 +15,6 @@ public interface OrderService {
     List<ShopOrderListVO> getShopOrderList(Long userId);
     ShopOrderVO getShopOrderDetail(Long orderId);
     List<ConsultationOrderListVO> getConsultationOrderList(Long userId);
+    PrescriptionVO getPrescriptionOfOrder(Long orderId);
 
 }

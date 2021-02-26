@@ -1,12 +1,22 @@
 package com.lhd.user.controller;
 
+import com.lhd.user.common.ResponseData;
+import com.lhd.user.dto.UserDTO;
 import com.lhd.user.handler.LoginUserHolder;
 import com.lhd.user.service.HealthService;
+import com.lhd.user.vo.HealthRecordDetailVO;
+import com.lhd.user.vo.HealthRecordListVO;
+import com.lhd.user.vo.PrescriptionListVO;
+import com.lhd.user.vo.PrescriptionVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author alan
@@ -24,5 +34,38 @@ public class HealthController {
         this.loginUserHolder=loginUserHolder;
     }
 
-
+    /**
+     *=============处方============
+     */
+    @GetMapping("/prescriptionList")
+    public ResponseData prescriptionList(){
+        UserDTO userDTO=loginUserHolder.getCurrentUser();
+        List<PrescriptionListVO> prescriptionListVOList= healthService.getPrescriptionList(userDTO.getId());
+        return ResponseData.ok().putDataValue(prescriptionListVOList);
+    }
+    @GetMapping("/prescriptionDetail/{prescriptionId}")
+    public ResponseData prescriptionDetail(@PathVariable("prescriptionId")Long prescriptionId){
+        PrescriptionVO prescriptionVO=healthService.getPrescriptionDetail(prescriptionId);
+        if(null!=prescriptionVO){
+            return ResponseData.ok().putDataValue(prescriptionVO);
+        }
+        return ResponseData.error();
+    }
+    /**
+     *=============健康档案============
+     */
+    @GetMapping("/healthRecordList")
+    public ResponseData healthRecordList(){
+        UserDTO userDTO=loginUserHolder.getCurrentUser();
+        List<HealthRecordListVO> recordListVOList=healthService.getHealthRecordList(userDTO.getId());
+        return ResponseData.ok().putDataValue(recordListVOList);
+    }
+    @GetMapping("/healthRecordDetail/{recordId}")
+    public ResponseData healthRecordDetail(@PathVariable("recordId")Long recordId){
+        HealthRecordDetailVO detailVO=healthService.getHealthRecordDetail(recordId);
+        if(null!=detailVO){
+            return ResponseData.ok().putDataValue(detailVO);
+        }
+        return ResponseData.error();
+    }
 }

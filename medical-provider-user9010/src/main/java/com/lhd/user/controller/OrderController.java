@@ -7,13 +7,12 @@ import com.lhd.user.common.TableVO;
 import com.lhd.user.dto.UserDTO;
 import com.lhd.user.handler.LoginUserHolder;
 import com.lhd.user.service.OrderService;
+import com.lhd.user.vo.ConsultationOrderListVO;
+import com.lhd.user.vo.PrescriptionVO;
 import com.lhd.user.vo.ShopOrderListVO;
 import com.lhd.user.vo.ShopOrderVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -54,6 +53,19 @@ public class OrderController {
     /**
      * ================问诊订单==============
      */
-
+    @GetMapping("/consultationOrderList")
+    public TableVO consultationOrderList(@RequestParam(value = "page",defaultValue = "1") Integer page,
+                                              @RequestParam(value = "page",defaultValue = "20") Integer limit){
+        UserDTO  userDTO=loginUserHolder.getCurrentUser();
+        PageHelper.startPage(page,limit);
+        List<ConsultationOrderListVO> orderListVOList=orderService.getConsultationOrderList(userDTO.getId());
+        PageInfo pageInfo=new PageInfo<>(orderListVOList);
+        return new TableVO(pageInfo,orderListVOList);
+    }
+    @GetMapping("/prescription/{orderId}")
+    public ResponseData prescriptionOfOrder(@PathVariable("orderId")Long orderId){
+        PrescriptionVO prescriptionVO=orderService.getPrescriptionOfOrder(orderId);
+        return ResponseData.ok().putDataValue(prescriptionVO);
+    }
 
 }
