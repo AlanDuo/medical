@@ -1,6 +1,7 @@
 package com.lhd.user.service.impl;
 
 import com.lhd.user.dao.*;
+import com.lhd.user.dto.HealthRecordDTO;
 import com.lhd.user.entities.*;
 import com.lhd.user.service.HealthService;
 import com.lhd.user.vo.HealthRecordDetailVO;
@@ -104,5 +105,13 @@ public class HealthServiceImpl implements HealthService {
             return detailVO;
         }
         return null;
+    }
+
+    @Override
+    public boolean addHealthRecord(HealthRecordDTO recordDTO) {
+        HealthRecord record=new HealthRecord();
+        BeanUtils.copyProperties(recordDTO,record);
+
+        return recordMapper.insertSelective(record)>0;
     }
 }

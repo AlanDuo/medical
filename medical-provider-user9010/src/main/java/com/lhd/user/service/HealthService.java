@@ -1,5 +1,6 @@
 package com.lhd.user.service;
 
+import com.lhd.user.dto.HealthRecordDTO;
 import com.lhd.user.vo.HealthRecordDetailVO;
 import com.lhd.user.vo.HealthRecordListVO;
 import com.lhd.user.vo.PrescriptionListVO;
@@ -16,4 +17,5 @@ public interface HealthService {
     PrescriptionVO getPrescriptionDetail(Long prescriptionId);
     List<HealthRecordListVO> getHealthRecordList(Long userId);
     HealthRecordDetailVO getHealthRecordDetail(Long recordId);
+    boolean addHealthRecord(HealthRecordDTO recordDTO);
 }

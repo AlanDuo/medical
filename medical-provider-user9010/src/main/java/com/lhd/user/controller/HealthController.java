@@ -1,6 +1,7 @@
 package com.lhd.user.controller;
 
 import com.lhd.user.common.ResponseData;
+import com.lhd.user.dto.HealthRecordDTO;
 import com.lhd.user.dto.UserDTO;
 import com.lhd.user.handler.LoginUserHolder;
 import com.lhd.user.service.HealthService;
@@ -11,10 +12,7 @@ import com.lhd.user.vo.PrescriptionVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -67,5 +65,10 @@ public class HealthController {
             return ResponseData.ok().putDataValue(detailVO);
         }
         return ResponseData.error();
+    }
+    @PostMapping("/addHealthRecord")
+    public ResponseData addHealthRecord(@RequestBody HealthRecordDTO recordDTO){
+        healthService.addHealthRecord(recordDTO);
+        return ResponseData.ok();
     }
 }

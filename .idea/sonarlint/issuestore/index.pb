@@ -273,3 +273,11 @@ Wmedical-provider-user9010/src/main/java/com/lhd/user/service/impl/OrderServiceI
 Kmedical-provider-user9010/src/main/java/com/lhd/user/vo/PrescriptionVO.java,4\9\49f226373b94dd61d01d599f333bca6e94c31e57
 
 Omedical-provider-user9010/src/main/java/com/lhd/user/vo/PrescriptionListVO.java,8\3\8359cb7cd4ceb6bb7812c935d73e3fb5b1961857
+j
+:medical-provider-user9010/src/main/resources/generator.xml,8\5\850426efd5fe412389496a46d9237f7334c2ae20
+Å
+Qmedical-provider-user9010/src/main/java/com/lhd/user/vo/HealthRecordDetailVO.java,2\b\2b9752664fb27b0d16f4d72f92a4d7d77dcc11e3
+
+Omedical-provider-user9010/src/main/java/com/lhd/user/vo/HealthRecordListVO.java,9\d\9d45861ba4eb3a2f8851ae063a95413d44119859
+}
+Mmedical-provider-user9010/src/main/java/com/lhd/user/dto/HealthRecordDTO.java,e\d\ed608822c4252ac8ad5d543f904f429ff38224ca
