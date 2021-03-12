@@ -1,10 +1,7 @@
 package com.lhd.user.service;
 
-import com.lhd.user.entities.Bill;
+import com.lhd.user.dto.FeedbackDTO;
 import com.lhd.user.entities.User;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 /**
  * @author alan
@@ -12,4 +9,5 @@ import java.util.List;
  */
 public interface UserService {
     User getUserById(Long userId);
+    boolean addFeedback(FeedbackDTO feedbackDTO);
 }

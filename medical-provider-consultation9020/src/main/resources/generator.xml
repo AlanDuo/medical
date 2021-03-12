@@ -22,7 +22,7 @@
         </javaTypeResolver>
 
         <!-- 指定Entity实体类生成的位置 -->
-        <javaModelGenerator targetPackage="com.lhd.user.entities"
+        <javaModelGenerator targetPackage="com.lhd.consultation.entities"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
@@ -35,11 +35,12 @@
 
         <!-- 指定DAO接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.lhd.user.dao"
+                             targetPackage="com.lhd.consultation.dao"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- 指定Table的生成策略 -->
-        <table tableName="feedback" domainObjectName="Feedback"></table>
+        <!--<table tableName="consultation_order" domainObjectName="ConsultationOrder"></table>-->
+        <table tableName="prescription" domainObjectName="Prescription"></table>
     </context>
 </generatorConfiguration>
