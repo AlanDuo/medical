@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2021/3/17
  */
 @RestController
-@RequestMapping("/manager/doctor")
+@RequestMapping("/doctor")
 public class DoctorController {
     private DoctorService doctorService;
     @Autowired

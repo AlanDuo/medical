@@ -2,6 +2,7 @@ package com.lhd.manager.entity;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class GoodsExample {
@@ -822,6 +823,186 @@ public class GoodsExample {
 
         public Criteria andStatusNotBetween(Byte value1, Byte value2) {
             addCriterion("status not between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeIsNull() {
+            addCriterion("purchase_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeIsNotNull() {
+            addCriterion("purchase_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeEqualTo(Date value) {
+            addCriterion("purchase_time =", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeNotEqualTo(Date value) {
+            addCriterion("purchase_time <>", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeGreaterThan(Date value) {
+            addCriterion("purchase_time >", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("purchase_time >=", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeLessThan(Date value) {
+            addCriterion("purchase_time <", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeLessThanOrEqualTo(Date value) {
+            addCriterion("purchase_time <=", value, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeIn(List<Date> values) {
+            addCriterion("purchase_time in", values, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeNotIn(List<Date> values) {
+            addCriterion("purchase_time not in", values, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeBetween(Date value1, Date value2) {
+            addCriterion("purchase_time between", value1, value2, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPurchaseTimeNotBetween(Date value1, Date value2) {
+            addCriterion("purchase_time not between", value1, value2, "purchaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeIsNull() {
+            addCriterion("up_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeIsNotNull() {
+            addCriterion("up_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeEqualTo(Date value) {
+            addCriterion("up_time =", value, "upTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeNotEqualTo(Date value) {
+            addCriterion("up_time <>", value, "upTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeGreaterThan(Date value) {
+            addCriterion("up_time >", value, "upTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("up_time >=", value, "upTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeLessThan(Date value) {
+            addCriterion("up_time <", value, "upTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeLessThanOrEqualTo(Date value) {
+            addCriterion("up_time <=", value, "upTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeIn(List<Date> values) {
+            addCriterion("up_time in", values, "upTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeNotIn(List<Date> values) {
+            addCriterion("up_time not in", values, "upTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeBetween(Date value1, Date value2) {
+            addCriterion("up_time between", value1, value2, "upTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpTimeNotBetween(Date value1, Date value2) {
+            addCriterion("up_time not between", value1, value2, "upTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeIsNull() {
+            addCriterion("down_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeIsNotNull() {
+            addCriterion("down_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeEqualTo(Date value) {
+            addCriterion("down_time =", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeNotEqualTo(Date value) {
+            addCriterion("down_time <>", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeGreaterThan(Date value) {
+            addCriterion("down_time >", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("down_time >=", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeLessThan(Date value) {
+            addCriterion("down_time <", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeLessThanOrEqualTo(Date value) {
+            addCriterion("down_time <=", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeIn(List<Date> values) {
+            addCriterion("down_time in", values, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeNotIn(List<Date> values) {
+            addCriterion("down_time not in", values, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeBetween(Date value1, Date value2) {
+            addCriterion("down_time between", value1, value2, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeNotBetween(Date value1, Date value2) {
+            addCriterion("down_time not between", value1, value2, "downTime");
             return (Criteria) this;
         }
     }

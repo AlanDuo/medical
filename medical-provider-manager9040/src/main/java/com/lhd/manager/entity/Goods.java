@@ -1,6 +1,7 @@
 package com.lhd.manager.entity;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class Goods {
     private Long goodsId;
@@ -24,6 +25,12 @@ public class Goods {
     private Integer stock;
 
     private Byte status;
+
+    private Date purchaseTime;
+
+    private Date upTime;
+
+    private Date downTime;
 
     public Long getGoodsId() {
         return goodsId;
@@ -111,5 +118,29 @@ public class Goods {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public Date getPurchaseTime() {
+        return purchaseTime;
+    }
+
+    public void setPurchaseTime(Date purchaseTime) {
+        this.purchaseTime = purchaseTime;
+    }
+
+    public Date getUpTime() {
+        return upTime;
+    }
+
+    public void setUpTime(Date upTime) {
+        this.upTime = upTime;
+    }
+
+    public Date getDownTime() {
+        return downTime;
+    }
+
+    public void setDownTime(Date downTime) {
+        this.downTime = downTime;
     }
 }

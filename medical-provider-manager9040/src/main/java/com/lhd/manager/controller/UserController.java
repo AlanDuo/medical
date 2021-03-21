@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2021/3/16
  */
 @RestController
-@RequestMapping("/manager/user")
+@RequestMapping("/user")
 public class UserController {
     private UserService userService;
     @Autowired

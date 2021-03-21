@@ -13,6 +13,9 @@
     <result column="wholesale_price" property="wholesalePrice" jdbcType="DECIMAL" />
     <result column="stock" property="stock" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="purchase_time" property="purchaseTime" jdbcType="TIMESTAMP" />
+    <result column="up_time" property="upTime" jdbcType="TIMESTAMP" />
+    <result column="down_time" property="downTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -74,7 +77,7 @@
   </sql>
   <sql id="Base_Column_List" >
     goods_id, goods_name, goods_img, goods_desc, goods_type, goods_purpose, goods_source, 
-    purchase_price, wholesale_price, stock, status
+    purchase_price, wholesale_price, stock, status, purchase_time, up_time, down_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lhd.manager.entity.GoodsExample" >
     select
@@ -110,11 +113,13 @@
     insert into goods (goods_id, goods_name, goods_img, 
       goods_desc, goods_type, goods_purpose, 
       goods_source, purchase_price, wholesale_price, 
-      stock, status)
+      stock, status, purchase_time, 
+      up_time, down_time)
     values (#{goodsId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, #{goodsImg,jdbcType=VARCHAR}, 
       #{goodsDesc,jdbcType=VARCHAR}, #{goodsType,jdbcType=VARCHAR}, #{goodsPurpose,jdbcType=VARCHAR}, 
       #{goodsSource,jdbcType=VARCHAR}, #{purchasePrice,jdbcType=DECIMAL}, #{wholesalePrice,jdbcType=DECIMAL}, 
-      #{stock,jdbcType=INTEGER}, #{status,jdbcType=TINYINT})
+      #{stock,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{purchaseTime,jdbcType=TIMESTAMP}, 
+      #{upTime,jdbcType=TIMESTAMP}, #{downTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lhd.manager.entity.Goods" >
     insert into goods
@@ -152,6 +157,15 @@
       <if test="status != null" >
         status,
       </if>
+      <if test="purchaseTime != null" >
+        purchase_time,
+      </if>
+      <if test="upTime != null" >
+        up_time,
+      </if>
+      <if test="downTime != null" >
+        down_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="goodsId != null" >
@@ -186,6 +200,15 @@
       </if>
       <if test="status != null" >
         #{status,jdbcType=TINYINT},
+      </if>
+      <if test="purchaseTime != null" >
+        #{purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upTime != null" >
+        #{upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="downTime != null" >
+        #{downTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -231,6 +254,15 @@
       <if test="record.status != null" >
         status = #{record.status,jdbcType=TINYINT},
       </if>
+      <if test="record.purchaseTime != null" >
+        purchase_time = #{record.purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.upTime != null" >
+        up_time = #{record.upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.downTime != null" >
+        down_time = #{record.downTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -248,7 +280,10 @@
       purchase_price = #{record.purchasePrice,jdbcType=DECIMAL},
       wholesale_price = #{record.wholesalePrice,jdbcType=DECIMAL},
       stock = #{record.stock,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=TINYINT}
+      status = #{record.status,jdbcType=TINYINT},
+      purchase_time = #{record.purchaseTime,jdbcType=TIMESTAMP},
+      up_time = #{record.upTime,jdbcType=TIMESTAMP},
+      down_time = #{record.downTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -286,6 +321,15 @@
       <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
       </if>
+      <if test="purchaseTime != null" >
+        purchase_time = #{purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upTime != null" >
+        up_time = #{upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="downTime != null" >
+        down_time = #{downTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
@@ -300,7 +344,10 @@
       purchase_price = #{purchasePrice,jdbcType=DECIMAL},
       wholesale_price = #{wholesalePrice,jdbcType=DECIMAL},
       stock = #{stock,jdbcType=INTEGER},
-      status = #{status,jdbcType=TINYINT}
+      status = #{status,jdbcType=TINYINT},
+      purchase_time = #{purchaseTime,jdbcType=TIMESTAMP},
+      up_time = #{upTime,jdbcType=TIMESTAMP},
+      down_time = #{downTime,jdbcType=TIMESTAMP}
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
 </mapper>

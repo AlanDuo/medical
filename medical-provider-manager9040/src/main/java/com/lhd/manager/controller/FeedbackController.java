@@ -9,7 +9,6 @@ import com.lhd.manager.vo.FeedbackListVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +16,7 @@ import java.util.List;
  * @date 2021/3/18
  */
 @RestController
-@RequestMapping("/manager/feedback")
+@RequestMapping("/feedback")
 public class FeedbackController {
     private FeedbackService feedbackService;
     @Autowired
