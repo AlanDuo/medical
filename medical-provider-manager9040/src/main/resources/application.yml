@@ -31,6 +31,15 @@ spring:
 mybatis:
   mapperLocations: classpath:mapper/*.xml
 
+file:
+  staticAccessPath: /static/image/**
+  uploadFolder: C://image/
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
 management:
   endpoints:
     web:

@@ -8,7 +8,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.38.130:8848
+        server-addr: 47.113.184.197:8848
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
   datasource:
@@ -20,8 +20,8 @@ spring:
   redis:
     database: 0
     port: 6379
-    host: 192.168.38.130
-    password:
+    host: 47.113.184.197
+    password: 123456
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   type-aliases-package: com.lhd.auth.entities    # 所有Entity别名类所在包

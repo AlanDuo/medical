@@ -28,11 +28,11 @@ public class GoodsController {
     }
 
     @GetMapping("/goods_list")
-    public TableVO getGoodsList(String goodsName, String goodsDesc, String goodsType, String goodsPurpose, String goodsSource,
+    public TableVO getGoodsList(String goodsName, String goodsDesc, String goodsType, String goodsPurpose, String goodsSource,Byte status,
                                 @RequestParam(value = "page",defaultValue = "1")Integer page,
                                 @RequestParam(value = "limit",defaultValue = "10")Integer limit){
         PageHelper.startPage(page,limit);
-        List<GoodsListVO> goodsList=goodsService.getGoodsList(goodsName, goodsDesc, goodsType, goodsPurpose, goodsSource);
+        List<GoodsListVO> goodsList=goodsService.getGoodsList(goodsName, goodsDesc, goodsType, goodsPurpose, goodsSource,status);
         PageInfo pageInfo=new PageInfo<>(goodsList);
         return new TableVO(pageInfo,goodsList);
     }
@@ -51,6 +51,22 @@ public class GoodsController {
     @PostMapping("/goods_add")
     public ResponseData goodsAdd(@RequestBody GoodsAddDTO goodsAddDTO){
         boolean result=goodsService.addGoods(goodsAddDTO);
+        if(result){
+            return ResponseData.ok();
+        }
+        return ResponseData.error();
+    }
+
+    /**
+     * 发布商品
+     *
+     * @param goodsId
+     * @param price
+     * @return
+     */
+    @PostMapping("/publish")
+    public ResponseData goodsPublish(Long goodsId,String price){
+        boolean result=goodsService.publishGoods(goodsId,price);
         if(result){
             return ResponseData.ok();
         }

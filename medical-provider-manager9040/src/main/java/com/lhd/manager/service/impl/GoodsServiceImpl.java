@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +27,7 @@ public class GoodsServiceImpl implements GoodsService {
     private GoodsMapper goodsMapper;
 
     @Override
-    public List<GoodsListVO> getGoodsList(String goodsName, String goodsDesc, String goodsType, String goodsPurpose, String goodsSource) {
+    public List<GoodsListVO> getGoodsList(String goodsName, String goodsDesc, String goodsType, String goodsPurpose, String goodsSource,Byte status) {
         GoodsExample goodsExample=new GoodsExample();
         GoodsExample.Criteria goodsCriteria=goodsExample.createCriteria();
         if(null!=goodsName && !"".equals(goodsName.trim())){
@@ -43,6 +44,9 @@ public class GoodsServiceImpl implements GoodsService {
         }
         if(null!=goodsSource && !"".equals(goodsSource.trim())){
             goodsCriteria.andGoodsSourceLike("%"+goodsSource+"%");
+        }
+        if(null!=status){
+            goodsCriteria.andStatusEqualTo(status);
         }
         List<Goods> goodsList=goodsMapper.selectByExample(goodsExample);
         List<GoodsListVO> goodsListVOList=new ArrayList<>();
@@ -68,7 +72,20 @@ public class GoodsServiceImpl implements GoodsService {
         Goods goods=new Goods();
         BeanUtils.copyProperties(goodsAddDTO,goods);
         goods.setPurchaseTime(new Date());
+        byte status=0;
+        goods.setStatus(status);
         return goodsMapper.insertSelective(goods)>0;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public boolean publishGoods(Long goodsId,String price){
+        Goods goods=goodsMapper.selectByPrimaryKey(goodsId);
+        goods.setWholesalePrice(new BigDecimal(price));
+        byte status=1;
+        goods.setStatus(status);
+        goods.setUpTime(new Date());
+        return goodsMapper.updateByPrimaryKeySelective(goods)>0;
     }
 
     @Transactional(rollbackFor = Exception.class)
