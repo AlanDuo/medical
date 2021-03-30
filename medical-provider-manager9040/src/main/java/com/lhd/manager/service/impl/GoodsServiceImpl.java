@@ -1,5 +1,6 @@
 package com.lhd.manager.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.lhd.manager.dao.GoodsMapper;
 import com.lhd.manager.dto.GoodsAddDTO;
 import com.lhd.manager.entity.Goods;
@@ -13,9 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author alan
@@ -27,7 +26,7 @@ public class GoodsServiceImpl implements GoodsService {
     private GoodsMapper goodsMapper;
 
     @Override
-    public List<GoodsListVO> getGoodsList(String goodsName, String goodsDesc, String goodsType, String goodsPurpose, String goodsSource,Byte status) {
+    public Map<String,Object> getGoodsList(String goodsName, String goodsDesc, String goodsType, String goodsPurpose, String goodsSource, Byte status) {
         GoodsExample goodsExample=new GoodsExample();
         GoodsExample.Criteria goodsCriteria=goodsExample.createCriteria();
         if(null!=goodsName && !"".equals(goodsName.trim())){
@@ -49,13 +48,18 @@ public class GoodsServiceImpl implements GoodsService {
             goodsCriteria.andStatusEqualTo(status);
         }
         List<Goods> goodsList=goodsMapper.selectByExample(goodsExample);
+        PageInfo pageInfo=new PageInfo<>(goodsList);
+
         List<GoodsListVO> goodsListVOList=new ArrayList<>();
         for(Goods goods:goodsList){
             GoodsListVO goodsListVO=new GoodsListVO();
             BeanUtils.copyProperties(goods,goodsListVO);
             goodsListVOList.add(goodsListVO);
         }
-        return goodsListVOList;
+        Map<String,Object> map=new HashMap<>();
+        map.put("pageInfo",pageInfo);
+        map.put("list",goodsListVOList);
+        return map;
     }
 
     @Override
@@ -100,7 +104,7 @@ public class GoodsServiceImpl implements GoodsService {
             //商品下架
             goods.setDownTime(new Date());
         }
-        return goodsMapper.insertSelective(goods)>0;
+        return goodsMapper.updateByPrimaryKeySelective(goods)>0;
     }
 
 }

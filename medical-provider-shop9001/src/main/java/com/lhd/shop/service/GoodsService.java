@@ -4,6 +4,7 @@ import com.lhd.shop.entities.Goods;
 import com.lhd.shop.vo.GoodsListVO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author alan
@@ -17,7 +18,7 @@ public interface GoodsService {
      * @param userId
      * @return
      */
-    List<GoodsListVO> indexGoodsList(String searchName,Long userId);
+    Map<String,Object> indexGoodsList(String searchName, Long userId);
 
     /**
      * 单个商品详情

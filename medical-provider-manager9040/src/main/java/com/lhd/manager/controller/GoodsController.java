@@ -9,10 +9,13 @@ import com.lhd.manager.entity.Goods;
 import com.lhd.manager.service.GoodsService;
 import com.lhd.manager.vo.GoodsInfoVO;
 import com.lhd.manager.vo.GoodsListVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author alan
@@ -21,6 +24,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/goods")
 public class GoodsController {
+    private static final Logger LOGGER=LoggerFactory.getLogger(GoodsController.class);
     private GoodsService goodsService;
     @Autowired
     public GoodsController(GoodsService goodsService){
@@ -32,9 +36,9 @@ public class GoodsController {
                                 @RequestParam(value = "page",defaultValue = "1")Integer page,
                                 @RequestParam(value = "limit",defaultValue = "10")Integer limit){
         PageHelper.startPage(page,limit);
-        List<GoodsListVO> goodsList=goodsService.getGoodsList(goodsName, goodsDesc, goodsType, goodsPurpose, goodsSource,status);
-        PageInfo pageInfo=new PageInfo<>(goodsList);
-        return new TableVO(pageInfo,goodsList);
+        Map<String,Object> map=goodsService.getGoodsList(goodsName, goodsDesc, goodsType, goodsPurpose, goodsSource,status);
+        PageInfo pageInfo=(PageInfo) map.get("pageInfo");
+        return new TableVO(pageInfo,(List<GoodsListVO>)map.get("list"));
     }
 
     @GetMapping("/goods_info/{goodsId}")
@@ -81,7 +85,8 @@ public class GoodsController {
      * @return
      */
     @PutMapping("/change_status")
-    public ResponseData changeGoodsStatus(Long goodsId,Byte status){
+    public ResponseData changeGoodsStatus(@RequestParam Long goodsId,@RequestParam Byte status){
+        LOGGER.info(goodsId+","+status);
         boolean result=goodsService.changeGoodsStatus(goodsId, status);
         if(result){
             return ResponseData.ok();

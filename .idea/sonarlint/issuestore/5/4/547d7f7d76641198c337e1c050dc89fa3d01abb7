@@ -1,5 +1,5 @@
 
-|
-java:S1450"_Remove the "resourceRolesMap" field and declare it as a local variable in the relevant methods.(ÏŠÍ¤8ƒé×Å…/
 c
 java:S1192"FDefine a constant instead of duplicating this literal "ADMIN" 3 times.(¨ëì²8ƒé×Å…/
+|
+java:S1450"_Remove the "resourceRolesMap" field and declare it as a local variable in the relevant methods.(ÏŠÍ¤8ƒé×Å…/

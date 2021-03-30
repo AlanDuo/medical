@@ -18,5 +18,5 @@ public class GoodsListVO {
 
     private String goodsDesc;
 
-    private BigDecimal purchasePrice;
+    private BigDecimal wholesalePrice;
 }

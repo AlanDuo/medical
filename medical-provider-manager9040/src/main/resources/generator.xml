@@ -44,8 +44,8 @@
         <!--<table tableName="bill" domainObjectName="Bill"></table>-->
         <!--<table tableName="doctor" domainObjectName="Doctor"></table>-->
         <!--<table tableName="goods" domainObjectName="Goods"></table>-->
-        <!--<table tableName="real_time_info" domainObjectName="RealTimeInfo"></table>-->
-        <table tableName="shop_order" domainObjectName="ShopOrder"></table>
+        <table tableName="real_time_info" domainObjectName="RealTimeInfo"></table>
+        <!--<table tableName="shop_order" domainObjectName="ShopOrder"></table>-->
         <!--<table tableName="user" domainObjectName="User"></table>-->
     </context>
 </generatorConfiguration>
