@@ -6,6 +6,7 @@ import com.lhd.shop.common.ResponseData;
 import com.lhd.shop.common.TableVO;
 import com.lhd.shop.entities.Goods;
 import com.lhd.shop.service.GoodsService;
+import com.lhd.shop.vo.GoodsInfoVO;
 import com.lhd.shop.vo.GoodsListVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +39,7 @@ public class ShopController {
     }
     @GetMapping("/goodsInfo/{goodsId}")
     public ResponseData<Goods> goodsInfo(@PathVariable("goodsId") Long goodsId){
-        Goods goods = goodsService.goodsInfo(goodsId);
-        return ResponseData.ok().putDataValue(goods);
+        GoodsInfoVO goodsInfo = goodsService.goodsInfo(goodsId);
+        return ResponseData.ok().putDataValue(goodsInfo);
     }
 }

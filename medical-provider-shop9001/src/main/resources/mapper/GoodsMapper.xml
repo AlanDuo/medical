@@ -5,6 +5,7 @@
     <id column="goods_id" property="goodsId" jdbcType="BIGINT" />
     <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
     <result column="goods_img" property="goodsImg" jdbcType="VARCHAR" />
+    <result column="intro_img" property="introImg" jdbcType="VARCHAR" />
     <result column="goods_desc" property="goodsDesc" jdbcType="VARCHAR" />
     <result column="goods_type" property="goodsType" jdbcType="VARCHAR" />
     <result column="goods_purpose" property="goodsPurpose" jdbcType="VARCHAR" />
@@ -13,6 +14,9 @@
     <result column="wholesale_price" property="wholesalePrice" jdbcType="DECIMAL" />
     <result column="stock" property="stock" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="purchase_time" property="purchaseTime" jdbcType="TIMESTAMP" />
+    <result column="up_time" property="upTime" jdbcType="TIMESTAMP" />
+    <result column="down_time" property="downTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,8 +77,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    goods_id, goods_name, goods_img, goods_desc, goods_type, goods_purpose, goods_source, 
-    purchase_price, wholesale_price, stock, status
+    goods_id, goods_name, goods_img, intro_img, goods_desc, goods_type, goods_purpose, 
+    goods_source, purchase_price, wholesale_price, stock, status, purchase_time, up_time, 
+    down_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lhd.shop.entities.GoodsExample" >
     select
@@ -108,13 +113,17 @@
   </delete>
   <insert id="insert" parameterType="com.lhd.shop.entities.Goods" >
     insert into goods (goods_id, goods_name, goods_img, 
-      goods_desc, goods_type, goods_purpose, 
-      goods_source, purchase_price, wholesale_price, 
-      stock, status)
+      intro_img, goods_desc, goods_type, 
+      goods_purpose, goods_source, purchase_price, 
+      wholesale_price, stock, status, 
+      purchase_time, up_time, down_time
+      )
     values (#{goodsId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, #{goodsImg,jdbcType=VARCHAR}, 
-      #{goodsDesc,jdbcType=VARCHAR}, #{goodsType,jdbcType=VARCHAR}, #{goodsPurpose,jdbcType=VARCHAR}, 
-      #{goodsSource,jdbcType=VARCHAR}, #{purchasePrice,jdbcType=DECIMAL}, #{wholesalePrice,jdbcType=DECIMAL}, 
-      #{stock,jdbcType=INTEGER}, #{status,jdbcType=TINYINT})
+      #{introImg,jdbcType=VARCHAR}, #{goodsDesc,jdbcType=VARCHAR}, #{goodsType,jdbcType=VARCHAR}, 
+      #{goodsPurpose,jdbcType=VARCHAR}, #{goodsSource,jdbcType=VARCHAR}, #{purchasePrice,jdbcType=DECIMAL}, 
+      #{wholesalePrice,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{purchaseTime,jdbcType=TIMESTAMP}, #{upTime,jdbcType=TIMESTAMP}, #{downTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lhd.shop.entities.Goods" >
     insert into goods
@@ -127,6 +136,9 @@
       </if>
       <if test="goodsImg != null" >
         goods_img,
+      </if>
+      <if test="introImg != null" >
+        intro_img,
       </if>
       <if test="goodsDesc != null" >
         goods_desc,
@@ -152,6 +164,15 @@
       <if test="status != null" >
         status,
       </if>
+      <if test="purchaseTime != null" >
+        purchase_time,
+      </if>
+      <if test="upTime != null" >
+        up_time,
+      </if>
+      <if test="downTime != null" >
+        down_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="goodsId != null" >
@@ -162,6 +183,9 @@
       </if>
       <if test="goodsImg != null" >
         #{goodsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="introImg != null" >
+        #{introImg,jdbcType=VARCHAR},
       </if>
       <if test="goodsDesc != null" >
         #{goodsDesc,jdbcType=VARCHAR},
@@ -187,6 +211,15 @@
       <if test="status != null" >
         #{status,jdbcType=TINYINT},
       </if>
+      <if test="purchaseTime != null" >
+        #{purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upTime != null" >
+        #{upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="downTime != null" >
+        #{downTime,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.lhd.shop.entities.GoodsExample" resultType="java.lang.Integer" >
@@ -206,6 +239,9 @@
       </if>
       <if test="record.goodsImg != null" >
         goods_img = #{record.goodsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introImg != null" >
+        intro_img = #{record.introImg,jdbcType=VARCHAR},
       </if>
       <if test="record.goodsDesc != null" >
         goods_desc = #{record.goodsDesc,jdbcType=VARCHAR},
@@ -231,6 +267,15 @@
       <if test="record.status != null" >
         status = #{record.status,jdbcType=TINYINT},
       </if>
+      <if test="record.purchaseTime != null" >
+        purchase_time = #{record.purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.upTime != null" >
+        up_time = #{record.upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.downTime != null" >
+        down_time = #{record.downTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -241,6 +286,7 @@
     set goods_id = #{record.goodsId,jdbcType=BIGINT},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
       goods_img = #{record.goodsImg,jdbcType=VARCHAR},
+      intro_img = #{record.introImg,jdbcType=VARCHAR},
       goods_desc = #{record.goodsDesc,jdbcType=VARCHAR},
       goods_type = #{record.goodsType,jdbcType=VARCHAR},
       goods_purpose = #{record.goodsPurpose,jdbcType=VARCHAR},
@@ -248,7 +294,10 @@
       purchase_price = #{record.purchasePrice,jdbcType=DECIMAL},
       wholesale_price = #{record.wholesalePrice,jdbcType=DECIMAL},
       stock = #{record.stock,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=TINYINT}
+      status = #{record.status,jdbcType=TINYINT},
+      purchase_time = #{record.purchaseTime,jdbcType=TIMESTAMP},
+      up_time = #{record.upTime,jdbcType=TIMESTAMP},
+      down_time = #{record.downTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -261,6 +310,9 @@
       </if>
       <if test="goodsImg != null" >
         goods_img = #{goodsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="introImg != null" >
+        intro_img = #{introImg,jdbcType=VARCHAR},
       </if>
       <if test="goodsDesc != null" >
         goods_desc = #{goodsDesc,jdbcType=VARCHAR},
@@ -286,6 +338,15 @@
       <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
       </if>
+      <if test="purchaseTime != null" >
+        purchase_time = #{purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upTime != null" >
+        up_time = #{upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="downTime != null" >
+        down_time = #{downTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
@@ -293,6 +354,7 @@
     update goods
     set goods_name = #{goodsName,jdbcType=VARCHAR},
       goods_img = #{goodsImg,jdbcType=VARCHAR},
+      intro_img = #{introImg,jdbcType=VARCHAR},
       goods_desc = #{goodsDesc,jdbcType=VARCHAR},
       goods_type = #{goodsType,jdbcType=VARCHAR},
       goods_purpose = #{goodsPurpose,jdbcType=VARCHAR},
@@ -300,7 +362,10 @@
       purchase_price = #{purchasePrice,jdbcType=DECIMAL},
       wholesale_price = #{wholesalePrice,jdbcType=DECIMAL},
       stock = #{stock,jdbcType=INTEGER},
-      status = #{status,jdbcType=TINYINT}
+      status = #{status,jdbcType=TINYINT},
+      purchase_time = #{purchaseTime,jdbcType=TIMESTAMP},
+      up_time = #{upTime,jdbcType=TIMESTAMP},
+      down_time = #{downTime,jdbcType=TIMESTAMP}
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
 </mapper>

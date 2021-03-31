@@ -1,9 +1,6 @@
 package com.lhd.shop.service;
 
-import com.lhd.shop.entities.Goods;
-import com.lhd.shop.vo.GoodsListVO;
-
-import java.util.List;
+import com.lhd.shop.vo.GoodsInfoVO;
 import java.util.Map;
 
 /**
@@ -26,5 +23,5 @@ public interface GoodsService {
      * @param goodsId
      * @return
      */
-    Goods goodsInfo(Long goodsId);
+    GoodsInfoVO goodsInfo(Long goodsId);
 }
