@@ -1,6 +1,7 @@
 package com.lhd.shop.entities;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class Goods {
     private Long goodsId;
@@ -8,6 +9,8 @@ public class Goods {
     private String goodsName;
 
     private String goodsImg;
+
+    private String introImg;
 
     private String goodsDesc;
 
@@ -24,6 +27,12 @@ public class Goods {
     private Integer stock;
 
     private Byte status;
+
+    private Date purchaseTime;
+
+    private Date upTime;
+
+    private Date downTime;
 
     public Long getGoodsId() {
         return goodsId;
@@ -47,6 +56,14 @@ public class Goods {
 
     public void setGoodsImg(String goodsImg) {
         this.goodsImg = goodsImg == null ? null : goodsImg.trim();
+    }
+
+    public String getIntroImg() {
+        return introImg;
+    }
+
+    public void setIntroImg(String introImg) {
+        this.introImg = introImg == null ? null : introImg.trim();
     }
 
     public String getGoodsDesc() {
@@ -111,5 +128,29 @@ public class Goods {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public Date getPurchaseTime() {
+        return purchaseTime;
+    }
+
+    public void setPurchaseTime(Date purchaseTime) {
+        this.purchaseTime = purchaseTime;
+    }
+
+    public Date getUpTime() {
+        return upTime;
+    }
+
+    public void setUpTime(Date upTime) {
+        this.upTime = upTime;
+    }
+
+    public Date getDownTime() {
+        return downTime;
+    }
+
+    public void setDownTime(Date downTime) {
+        this.downTime = downTime;
     }
 }

@@ -1,10 +1,12 @@
 package com.lhd.shop.service.impl;
 
 import com.github.pagehelper.PageInfo;
+import com.lhd.shop.dao.GoodsEvaluateMapper;
 import com.lhd.shop.dao.GoodsMapper;
-import com.lhd.shop.entities.Goods;
-import com.lhd.shop.entities.GoodsExample;
+import com.lhd.shop.dao.UserMapper;
+import com.lhd.shop.entities.*;
 import com.lhd.shop.service.GoodsService;
+import com.lhd.shop.vo.GoodsInfoVO;
 import com.lhd.shop.vo.GoodsListVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.Cacheable;
@@ -24,6 +26,10 @@ import java.util.Map;
 public class GoodsServiceImpl implements GoodsService {
     @Resource
     private GoodsMapper goodsMapper;
+    @Resource
+    private GoodsEvaluateMapper evaluateMapper;
+    @Resource
+    private UserMapper userMapper;
 
     @Override
     public Map<String,Object> indexGoodsList(String searchName, Long userId) {
@@ -49,11 +55,24 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Cacheable(value = "goodsInfo",key = "#goodsId")
     @Override
-    public Goods goodsInfo(Long goodsId) {
+    public GoodsInfoVO goodsInfo(Long goodsId) {
         Goods goods=goodsMapper.selectByPrimaryKey(goodsId);
-        if(null!=goods){
-            return goods;
+        GoodsInfoVO goodsInfoVO=new GoodsInfoVO();
+        BeanUtils.copyProperties(goods,goodsInfoVO);
+        GoodsEvaluateExample evaluateExample=new GoodsEvaluateExample();
+        evaluateExample.setOrderByClause("evaluate_time desc");
+        GoodsEvaluateExample.Criteria criteria=evaluateExample.createCriteria();
+        criteria.andGodosIdEqualTo(goodsId);
+        List<GoodsEvaluate> evaluateList=evaluateMapper.selectByExample(evaluateExample);
+        if(evaluateList.size()!=0){
+            GoodsEvaluate goodsEvaluate=evaluateList.get(0);
+            User user=userMapper.selectByPrimaryKey(goodsEvaluate.getUserId());
+            goodsInfoVO.setEvaUserId(goodsEvaluate.getUserId());
+            goodsInfoVO.setEvaUsername(user.getUsername());
+            goodsInfoVO.setEvaUserImg(user.getUserImg());
+            goodsInfoVO.setEvaContent(goodsEvaluate.getContent());
         }
-        return null;
+
+        return goodsInfoVO;
     }
 }

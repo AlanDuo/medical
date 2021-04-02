@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class ShopCartVO implements Serializable {
 
+
     private Long userId;
 
     private Long goodsId;
