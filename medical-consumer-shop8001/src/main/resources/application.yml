@@ -5,6 +5,10 @@ server:
 spring:
   application:
     name: medical-consumer-shop
+  profiles:
+    active: dev
+    main:
+    allow-bean-definition-overriding: true
   cloud:
     nacos:
       discovery:
