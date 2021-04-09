@@ -24,10 +24,6 @@ public class ShopOrderVO {
 
     private Long goodsId;
 
-    private Long userId;
-
-    private String address;
-
     private String goodsImg;
 
     private String goodsName;
@@ -35,6 +31,14 @@ public class ShopOrderVO {
     private String goodsDesc;
 
     private BigDecimal price;
+
+    private Integer amount;
+
+    private String username;
+
+    private String phone;
+
+    private String address;
 
     private String logisticsNum;
 

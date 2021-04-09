@@ -17,8 +17,6 @@ import java.util.Date;
 public class PrescriptionVO {
     private Long prescriptionId;
 
-    private Long orderId;
-
     private String username;
 
     private Byte gender;
@@ -34,10 +32,6 @@ public class PrescriptionVO {
     private String category;
 
     private String level;
-
-    private String material;
-
-    private Byte qualifications;
 
     private BigDecimal money;
 

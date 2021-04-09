@@ -24,21 +24,18 @@ import java.util.List;
 @RequestMapping("/health")
 public class HealthController {
     private static final Logger LOGGER=LoggerFactory.getLogger(HealthController.class);
-    private LoginUserHolder loginUserHolder;
     private HealthService healthService;
     @Autowired
-    public HealthController(HealthService healthService,LoginUserHolder loginUserHolder){
+    public HealthController(HealthService healthService){
         this.healthService=healthService;
-        this.loginUserHolder=loginUserHolder;
     }
 
     /**
      *=============处方============
      */
     @GetMapping("/prescriptionList")
-    public ResponseData prescriptionList(){
-        UserDTO userDTO=loginUserHolder.getCurrentUser();
-        List<PrescriptionListVO> prescriptionListVOList= healthService.getPrescriptionList(userDTO.getId());
+    public ResponseData prescriptionList(Long userId){
+        List<PrescriptionListVO> prescriptionListVOList= healthService.getPrescriptionList(userId);
         return ResponseData.ok().putDataValue(prescriptionListVOList);
     }
     @GetMapping("/prescriptionDetail/{prescriptionId}")
@@ -53,9 +50,8 @@ public class HealthController {
      *=============健康档案============
      */
     @GetMapping("/healthRecordList")
-    public ResponseData healthRecordList(){
-        UserDTO userDTO=loginUserHolder.getCurrentUser();
-        List<HealthRecordListVO> recordListVOList=healthService.getHealthRecordList(userDTO.getId());
+    public ResponseData healthRecordList(Long userId){
+        List<HealthRecordListVO> recordListVOList=healthService.getHealthRecordList(userId);
         return ResponseData.ok().putDataValue(recordListVOList);
     }
     @GetMapping("/healthRecordDetail/{recordId}")

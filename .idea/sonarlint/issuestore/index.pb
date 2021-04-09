@@ -329,8 +329,6 @@ Y
 )medical-provider-consultation9020/pom.xml,d\f\df0a6c9c373f5b98b034aa17af816e1fffeeea35
 v
 Fmedical-provider-user9010/src/main/resources/mapper/FeedbackMapper.xml,7\6\76e7769c8d3662b3ae16928de287024539f7617a
-j
-:medical-provider-user9010/src/main/resources/generator.xml,8\5\850426efd5fe412389496a46d9237f7334c2ae20
 |
 Lmedical-provider-user9010/src/main/java/com/lhd/user/dao/FeedbackMapper.java,4\9\491e2f97b30cc2deb62094137cc6e087015416c7
 y
@@ -591,3 +589,5 @@ Ymedical-consumer-shop8001/src/main/java/com/lhd/shop/service/ShopCartFallbackSe
 Tmedical-consumer-shop8001/src/main/java/com/lhd/shop/controller/OrderController.java,6\b\6b54803a0419e4bb70a23a9fe7f6403c0df51f6e
 ‡
 Wmedical-consumer-shop8001/src/main/java/com/lhd/shop/controller/ShopCartController.java,e\f\efa50b78cc663fc17bc693c46968b2888fda8697
+l
+<medical-consumer-shop8001/src/main/resources/application.yml,d\d\dd121d3baf5d4972cd967a13a834dac1f27dbca1

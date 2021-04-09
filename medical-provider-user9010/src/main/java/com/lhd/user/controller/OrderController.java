@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author alan
@@ -24,11 +25,9 @@ import java.util.List;
 @RequestMapping("/order")
 public class OrderController {
     private OrderService orderService;
-    private LoginUserHolder loginUserHolder;
     @Autowired
     private OrderController(OrderService orderService, LoginUserHolder loginUserHolder){
         this.orderService=orderService;
-        this.loginUserHolder=loginUserHolder;
     }
 
     /**
@@ -36,16 +35,16 @@ public class OrderController {
      */
 
     @GetMapping("/shopOrderList")
-    public TableVO shopOrderList(@RequestParam(value = "page",defaultValue = "1") Integer page,
+    public TableVO shopOrderList(Long userId,Byte status,@RequestParam(value = "page",defaultValue = "1") Integer page,
                                  @RequestParam(value = "page",defaultValue = "20") Integer limit){
-        UserDTO  userDTO=loginUserHolder.getCurrentUser();
         PageHelper.startPage(page,limit);
-        List<ShopOrderListVO> orderListVOList=orderService.getShopOrderList(userDTO.getId());
-        PageInfo pageInfo=new PageInfo<>(orderListVOList);
-        return new TableVO(pageInfo,orderListVOList);
+        Map<String,Object> map=orderService.getShopOrderList(userId,status);
+        PageInfo pageInfo=(PageInfo)map.get("pageInfo");
+        List<ShopOrderListVO> orderList=(List<ShopOrderListVO>)map.get("list");
+        return new TableVO(pageInfo,orderList);
     }
-    @GetMapping("/shopOrderDetail")
-    public ResponseData shopOrderDetail(Long orderId){
+    @GetMapping("/shopOrderDetail/{orderId}")
+    public ResponseData shopOrderDetail(@PathVariable("orderId") Long orderId){
         ShopOrderVO shopOrderVO=orderService.getShopOrderDetail(orderId);
         return ResponseData.ok().putDataValue(shopOrderVO);
     }
@@ -54,11 +53,10 @@ public class OrderController {
      * ================问诊订单==============
      */
     @GetMapping("/consultationOrderList")
-    public TableVO consultationOrderList(@RequestParam(value = "page",defaultValue = "1") Integer page,
+    public TableVO consultationOrderList(Long userId,@RequestParam(value = "page",defaultValue = "1") Integer page,
                                               @RequestParam(value = "page",defaultValue = "20") Integer limit){
-        UserDTO  userDTO=loginUserHolder.getCurrentUser();
         PageHelper.startPage(page,limit);
-        List<ConsultationOrderListVO> orderListVOList=orderService.getConsultationOrderList(userDTO.getId());
+        List<ConsultationOrderListVO> orderListVOList=orderService.getConsultationOrderList(userId);
         PageInfo pageInfo=new PageInfo<>(orderListVOList);
         return new TableVO(pageInfo,orderListVOList);
     }

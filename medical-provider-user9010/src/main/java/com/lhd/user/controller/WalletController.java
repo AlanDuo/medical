@@ -1,9 +1,7 @@
 package com.lhd.user.controller;
 
 import com.lhd.user.common.ResponseData;
-import com.lhd.user.dto.UserDTO;
 import com.lhd.user.entities.Bill;
-import com.lhd.user.handler.LoginUserHolder;
 import com.lhd.user.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,28 +20,25 @@ import java.util.List;
 @RequestMapping("wallet")
 public class WalletController {
     private WalletService walletService;
-    private LoginUserHolder loginUserHolder;
     @Autowired
-    public WalletController(WalletService walletService,LoginUserHolder loginUserHolder){
+    public WalletController(WalletService walletService){
         this.walletService=walletService;
     }
 
     @GetMapping("/balance")
-    public ResponseData userWallet(){
-        UserDTO userDTO=loginUserHolder.getCurrentUser();
-        BigDecimal wallet=walletService.getUserWallet(userDTO.getId());
+    public ResponseData userWallet(Long userId){
+
+        BigDecimal wallet=walletService.getUserWallet(userId);
         return ResponseData.ok().putDataValue(wallet);
     }
     @GetMapping("/bill")
-    public ResponseData userBill(){
-        UserDTO userDTO=loginUserHolder.getCurrentUser();
-        List<Bill> billList=walletService.getUserBill(userDTO.getId());
+    public ResponseData userBill(Long userId){
+        List<Bill> billList=walletService.getUserBill(userId);
         return ResponseData.ok().putDataValue(billList);
     }
     @PostMapping("/chargeWallet")
-    public ResponseData chargeWallet(BigDecimal money,String purpose){
-        UserDTO userDTO=loginUserHolder.getCurrentUser();
-        walletService.chargeWallet(userDTO.getId(),money,purpose);
+    public ResponseData chargeWallet(Long userId,BigDecimal money,String purpose){
+        walletService.chargeWallet(userId,money,purpose);
         return ResponseData.ok();
     }
 }

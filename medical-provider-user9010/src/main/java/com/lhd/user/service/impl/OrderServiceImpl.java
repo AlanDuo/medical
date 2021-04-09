@@ -1,5 +1,6 @@
 package com.lhd.user.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.lhd.user.dao.*;
 import com.lhd.user.entities.*;
 import com.lhd.user.service.OrderService;
@@ -12,7 +13,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author alan
@@ -37,14 +40,18 @@ public class OrderServiceImpl implements OrderService {
      *================商城订单================
      */
     @Override
-    public List<ShopOrderListVO> getShopOrderList(Long userId) {
+    public Map<String,Object> getShopOrderList(Long userId,Byte status) {
         ShopOrderExample orderExample=new ShopOrderExample();
         orderExample.setOrderByClause("create_time DESC");
         ShopOrderExample.Criteria orderCriteria=orderExample.createCriteria();
         orderCriteria.andUserIdEqualTo(userId);
+        orderCriteria.andStatusEqualTo(status);
         List<ShopOrder> shopOrderList=shopOrderMapper.selectByExample(orderExample);
+        Map<String,Object> map=new HashMap<>();
+        PageInfo pageInfo=new PageInfo<>(shopOrderList);
+        map.put("pageInfo",pageInfo);
+        List<ShopOrderListVO> orderListVOList=new ArrayList<>();
         if(shopOrderList.size()!=0){
-            List<ShopOrderListVO> orderListVOList=new ArrayList<>();
             for(ShopOrder shopOrder:shopOrderList){
                 Goods goods=goodsMapper.selectByPrimaryKey(shopOrder.getGoodsId());
                 ShopOrderListVO orderListVO=new ShopOrderListVO();
@@ -52,9 +59,9 @@ public class OrderServiceImpl implements OrderService {
                 BeanUtils.copyProperties(shopOrder,orderListVO);
                 orderListVOList.add(orderListVO);
             }
-            return orderListVOList;
         }
-        return null;
+        map.put("list",orderListVOList);
+        return map;
     }
 
     @Override
@@ -65,6 +72,8 @@ public class OrderServiceImpl implements OrderService {
             Goods goods=goodsMapper.selectByPrimaryKey(shopOrder.getGoodsId());
             BeanUtils.copyProperties(shopOrderVO,shopOrder);
             BeanUtils.copyProperties(shopOrderVO,goods);
+            shopOrderVO.setPrice(goods.getWholesalePrice());
+            shopOrderVO.setStatus(shopOrder.getStatus());
             return shopOrderVO;
         }
         return null;
