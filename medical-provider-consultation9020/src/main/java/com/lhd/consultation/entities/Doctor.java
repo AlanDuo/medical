@@ -5,6 +5,10 @@ public class Doctor {
 
     private Long userId;
 
+    private String username;
+
+    private String phone;
+
     private String hospital;
 
     private String category;
@@ -18,6 +22,8 @@ public class Doctor {
     private Byte qualifications;
 
     private Integer star;
+
+    private String goodAt;
 
     public Long getDoctorId() {
         return doctorId;
@@ -33,6 +39,22 @@ public class Doctor {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getHospital() {
@@ -89,5 +111,13 @@ public class Doctor {
 
     public void setStar(Integer star) {
         this.star = star;
+    }
+
+    public String getGoodAt() {
+        return goodAt;
+    }
+
+    public void setGoodAt(String goodAt) {
+        this.goodAt = goodAt == null ? null : goodAt.trim();
     }
 }

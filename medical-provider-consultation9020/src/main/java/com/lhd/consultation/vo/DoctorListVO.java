@@ -22,5 +22,7 @@ public class DoctorListVO {
 
     private String level;
 
+    private String goodsAt;
+
     private Integer star;
 }

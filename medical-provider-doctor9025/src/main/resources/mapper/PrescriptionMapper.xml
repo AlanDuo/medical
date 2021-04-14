@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lhd.doctor.dao.PrescriptionMapper" >
+  <resultMap id="BaseResultMap" type="com.lhd.doctor.entity.Prescription" >
+    <id column="prescription_id" property="prescriptionId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="doctor_id" property="doctorId" jdbcType="BIGINT" />
+    <result column="diagnosis_result" property="diagnosisResult" jdbcType="VARCHAR" />
+    <result column="rp" property="rp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    prescription_id, order_id, user_id, doctor_id, diagnosis_result, rp
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lhd.doctor.entity.PrescriptionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from prescription
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from prescription
+    where prescription_id = #{prescriptionId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from prescription
+    where prescription_id = #{prescriptionId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lhd.doctor.entity.PrescriptionExample" >
+    delete from prescription
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lhd.doctor.entity.Prescription" >
+    insert into prescription (prescription_id, order_id, user_id, 
+      doctor_id, diagnosis_result, rp
+      )
+    values (#{prescriptionId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{doctorId,jdbcType=BIGINT}, #{diagnosisResult,jdbcType=VARCHAR}, #{rp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lhd.doctor.entity.Prescription" >
+    insert into prescription
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prescriptionId != null" >
+        prescription_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="doctorId != null" >
+        doctor_id,
+      </if>
+      <if test="diagnosisResult != null" >
+        diagnosis_result,
+      </if>
+      <if test="rp != null" >
+        rp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prescriptionId != null" >
+        #{prescriptionId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="doctorId != null" >
+        #{doctorId,jdbcType=BIGINT},
+      </if>
+      <if test="diagnosisResult != null" >
+        #{diagnosisResult,jdbcType=VARCHAR},
+      </if>
+      <if test="rp != null" >
+        #{rp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lhd.doctor.entity.PrescriptionExample" resultType="java.lang.Integer" >
+    select count(*) from prescription
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update prescription
+    <set >
+      <if test="record.prescriptionId != null" >
+        prescription_id = #{record.prescriptionId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.doctorId != null" >
+        doctor_id = #{record.doctorId,jdbcType=BIGINT},
+      </if>
+      <if test="record.diagnosisResult != null" >
+        diagnosis_result = #{record.diagnosisResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rp != null" >
+        rp = #{record.rp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update prescription
+    set prescription_id = #{record.prescriptionId,jdbcType=BIGINT},
+      order_id = #{record.orderId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      doctor_id = #{record.doctorId,jdbcType=BIGINT},
+      diagnosis_result = #{record.diagnosisResult,jdbcType=VARCHAR},
+      rp = #{record.rp,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhd.doctor.entity.Prescription" >
+    update prescription
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="doctorId != null" >
+        doctor_id = #{doctorId,jdbcType=BIGINT},
+      </if>
+      <if test="diagnosisResult != null" >
+        diagnosis_result = #{diagnosisResult,jdbcType=VARCHAR},
+      </if>
+      <if test="rp != null" >
+        rp = #{rp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where prescription_id = #{prescriptionId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhd.doctor.entity.Prescription" >
+    update prescription
+    set order_id = #{orderId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      doctor_id = #{doctorId,jdbcType=BIGINT},
+      diagnosis_result = #{diagnosisResult,jdbcType=VARCHAR},
+      rp = #{rp,jdbcType=VARCHAR}
+    where prescription_id = #{prescriptionId,jdbcType=BIGINT}
+  </update>
+</mapper>

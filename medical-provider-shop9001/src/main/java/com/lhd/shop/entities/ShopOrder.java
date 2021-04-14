@@ -11,6 +11,8 @@ public class ShopOrder {
 
     private String goodsName;
 
+    private Integer amount;
+
     private Long userId;
 
     private String username;
@@ -63,6 +65,14 @@ public class ShopOrder {
 
     public void setGoodsName(String goodsName) {
         this.goodsName = goodsName == null ? null : goodsName.trim();
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public Long getUserId() {

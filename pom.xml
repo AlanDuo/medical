@@ -18,6 +18,8 @@
         <module>medical-provider-user9010</module>
         <module>medical-provider-consultation9020</module>
         <module>medical-provider-manager9040</module>
+        <module>medical-provider-encyclopedias9030</module>
+        <module>medical-provider-doctor9025</module>
     </modules>
     <packaging>pom</packaging>
 

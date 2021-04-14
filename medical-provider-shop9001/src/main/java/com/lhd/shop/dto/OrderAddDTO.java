@@ -26,4 +26,6 @@ public class OrderAddDTO implements Serializable {
 
     private String address;
 
+    private Integer amount;
+
 }

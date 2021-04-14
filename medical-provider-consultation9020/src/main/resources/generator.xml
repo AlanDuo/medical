@@ -41,6 +41,6 @@
         </javaClientGenerator>
         <!-- 指定Table的生成策略 -->
         <!--<table tableName="consultation_order" domainObjectName="ConsultationOrder"></table>-->
-        <table tableName="prescription" domainObjectName="Prescription"></table>
+        <table tableName="doctor" domainObjectName="Doctor"></table>
     </context>
 </generatorConfiguration>

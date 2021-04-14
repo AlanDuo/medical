@@ -6,6 +6,7 @@
     <result column="order_num" property="orderNum" jdbcType="BIGINT" />
     <result column="goods_id" property="goodsId" jdbcType="BIGINT" />
     <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
@@ -77,8 +78,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    order_id, order_num, goods_id, goods_name, user_id, username, phone, address, logistics_num, 
-    status, create_time, pay_time, deliver_time, receive_time, finish_time
+    order_id, order_num, goods_id, goods_name, amount, user_id, username, phone, address, 
+    logistics_num, status, create_time, pay_time, deliver_time, receive_time, finish_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lhd.shop.entities.ShopOrderExample" >
     select
@@ -126,17 +127,17 @@
   </delete>
   <insert id="insert" parameterType="com.lhd.shop.entities.ShopOrder" >
     insert into shop_order (order_id, order_num, goods_id, 
-      goods_name, user_id, username, 
-      phone, address, logistics_num, 
-      status, create_time, pay_time, 
-      deliver_time, receive_time, finish_time
-      )
+      goods_name, amount, user_id, 
+      username, phone, address, 
+      logistics_num, status, create_time, 
+      pay_time, deliver_time, receive_time, 
+      finish_time)
     values (#{orderId,jdbcType=BIGINT}, #{orderNum,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, 
-      #{goodsName,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{logisticsNum,jdbcType=VARCHAR}, 
-      #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, 
-      #{deliverTime,jdbcType=TIMESTAMP}, #{receiveTime,jdbcType=TIMESTAMP}, #{finishTime,jdbcType=TIMESTAMP}
-      )
+      #{goodsName,jdbcType=VARCHAR}, #{amount,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, 
+      #{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{logisticsNum,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{payTime,jdbcType=TIMESTAMP}, #{deliverTime,jdbcType=TIMESTAMP}, #{receiveTime,jdbcType=TIMESTAMP}, 
+      #{finishTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lhd.shop.entities.ShopOrder" >
     insert into shop_order
@@ -152,6 +153,9 @@
       </if>
       <if test="goodsName != null" >
         goods_name,
+      </if>
+      <if test="amount != null" >
+        amount,
       </if>
       <if test="userId != null" >
         user_id,
@@ -199,6 +203,9 @@
       </if>
       <if test="goodsName != null" >
         #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
       </if>
       <if test="userId != null" >
         #{userId,jdbcType=BIGINT},
@@ -256,6 +263,9 @@
       <if test="record.goodsName != null" >
         goods_name = #{record.goodsName,jdbcType=VARCHAR},
       </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=INTEGER},
+      </if>
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
@@ -300,6 +310,7 @@
       order_num = #{record.orderNum,jdbcType=BIGINT},
       goods_id = #{record.goodsId,jdbcType=BIGINT},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
+      amount = #{record.amount,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=BIGINT},
       username = #{record.username,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
@@ -326,6 +337,9 @@
       </if>
       <if test="goodsName != null" >
         goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=INTEGER},
       </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=BIGINT},
@@ -368,6 +382,7 @@
     set order_num = #{orderNum,jdbcType=BIGINT},
       goods_id = #{goodsId,jdbcType=BIGINT},
       goods_name = #{goodsName,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=BIGINT},
       username = #{username,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},

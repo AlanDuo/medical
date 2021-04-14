@@ -9,8 +9,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="medical-provider-consultation9020" />
         <module name="medical-provider-manager9040" />
+        <module name="medical-provider-doctor9025" />
         <module name="medical-oauth2-gateway" />
         <module name="medical-consumer-shop8001" />
+        <module name="medical-provider-encyclopedias9030" />
         <module name="medical-provider-shop9002" />
         <module name="medical-provider-shop9001" />
         <module name="medical-oauth2-auth" />

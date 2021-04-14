@@ -27,4 +27,6 @@ public class DoctorIntroVO {
     private String intro;
 
     private Integer star;
+
+    private String goodAt;
 }
