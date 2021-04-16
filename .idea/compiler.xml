@@ -7,22 +7,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="medical-provider-consultation9020" />
+        <module name="medical-common-api" />
         <module name="medical-provider-manager9040" />
-        <module name="medical-provider-doctor9025" />
-        <module name="medical-oauth2-gateway" />
+        <module name="medical-provider-consultation9020" />
+        <module name="medical-provider-user9010" />
         <module name="medical-consumer-shop8001" />
+        <module name="medical-provider-shop9001" />
         <module name="medical-provider-encyclopedias9030" />
         <module name="medical-provider-shop9002" />
-        <module name="medical-provider-shop9001" />
+        <module name="medical-oauth2-gateway" />
         <module name="medical-oauth2-auth" />
         <module name="medical-oauth2-api" />
-        <module name="medical-provider-user9010" />
+        <module name="medical-provider-doctor9025" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="medical-common-api" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

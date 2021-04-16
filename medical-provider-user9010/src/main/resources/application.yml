@@ -1,5 +1,7 @@
 server:
   port: 9010
+  servlet:
+    context-path: /user
 spring:
   application:
     name: medical-provider-user

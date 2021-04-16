@@ -1,0 +1,21 @@
+
+f
+java:S1192ğ"JDefine a constant instead of duplicating this literal "doctorId" 10 times.(‡¼áıÿÿÿÿ
+g
+java:S1192è"KDefine a constant instead of duplicating this literal "orderTime" 10 times.(óÌ‘ªøÿÿÿÿ
+g
+java:S1192´"KDefine a constant instead of duplicating this literal "patientId" 10 times.(‘©ÑÜøÿÿÿÿ
+c
+java:S1192¬"GDefine a constant instead of duplicating this literal "money" 10 times.(ƒå«…ÿÿÿÿÿ
+_
+java:S1192x"IDefine a constant instead of duplicating this literal "orderId" 10 times.(ÄæíÃ
+`	java:S112Z"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
+`	java:S112a"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºşÿÿÿÿ
+Z	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
+
+v
+java:S1488:"`Immediately return this expression instead of assigning it to the temporary variable "criteria".(¶Õ¯ì
+n
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÏßÉe
+o
+java:S2293I"YReplace the type specification in this constructor call with the diamond operator ("<>").(óÎ³Ù

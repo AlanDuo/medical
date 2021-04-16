@@ -1,0 +1,43 @@
+
+_
+java:S1192Ô"IDefine a constant instead of duplicating this literal "remarks" 12 times.(„·ä
+_
+java:S1192Î"HDefine a constant instead of duplicating this literal "userId" 10 times.(İ§‰ 
+f
+java:S1192à"ODefine a constant instead of duplicating this literal "treatmentDept" 12 times.(Ìö–·
+_
+java:S1192¦"HDefine a constant instead of duplicating this literal "doctor" 12 times.(µ®ƒë
+k
+java:S1192Ğ"ODefine a constant instead of duplicating this literal "diagnosisName" 12 times.(·£™üÿÿÿÿ
+f
+java:S1192’"JDefine a constant instead of duplicating this literal "recordId" 10 times.(»¸Òøÿÿÿÿ
+e
+java:S1192Š"NDefine a constant instead of duplicating this literal "relationship" 12 times.(¬‚ ÷
+j
+java:S1192"NDefine a constant instead of duplicating this literal "prescription" 12 times.(Íûô‡øÿÿÿÿ
+_
+java:S1192–"HDefine a constant instead of duplicating this literal "inTime" 10 times.(š¬¤ï
+c
+java:S1192ì"GDefine a constant instead of duplicating this literal "phone" 12 times.(ºÔñŠÿÿÿÿÿ
+f
+java:S1192š"ODefine a constant instead of duplicating this literal "visitHospital" 12 times.(‹äÏ»
+e
+java:S1192Ò"IDefine a constant instead of duplicating this literal "outTime" 10 times.(åª”şÿÿÿÿ
+k
+java:S1192a"PDefine a constant instead of duplicating this literal " cannot be null" 4 times.(õÜ—ºşÿÿÿÿ
+`	java:S112Z"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
+`	java:S112a"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºşÿÿÿÿ
+Z	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
+
+`	java:S112o"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºşÿÿÿÿ
+[	java:S112v"FDefine and throw a dedicated exception instead of using a generic one.(Áš¹
+[	java:S112‚"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
+
+v
+java:S1488:"`Immediately return this expression instead of assigning it to the temporary variable "criteria".(¶Õ¯ì
+n
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÏßÉe
+o
+java:S2293I"YReplace the type specification in this constructor call with the diamond operator ("<>").(óÎ³Ù
+o
+java:S2293x"YReplace the type specification in this constructor call with the diamond operator ("<>").(·ü–

@@ -41,10 +41,11 @@
         </javaClientGenerator>
         <!-- 指定Table的生成策略 -->
         <table tableName="goods" domainObjectName="Goods"></table>
-        <table tableName="user" domainObjectName="User"></table>
+        <table tableName="doctor_agree" domainObjectName="DoctorAgree"></table>
+        <!--<table tableName="user" domainObjectName="User"></table>
         <table tableName="doctor" domainObjectName="Doctor"></table>
         <table tableName="prescription" domainObjectName="Prescription"></table>
         <table tableName="consultation_order" domainObjectName="ConsultationOrder"></table>
-        <table tableName="feedback" domainObjectName="Feedback"></table>
+        <table tableName="feedback" domainObjectName="Feedback"></table>-->
     </context>
 </generatorConfiguration>

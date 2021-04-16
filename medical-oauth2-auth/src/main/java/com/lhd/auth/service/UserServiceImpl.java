@@ -3,7 +3,9 @@ package com.lhd.auth.service;
 import com.lhd.auth.constant.MessageConstant;
 import com.lhd.auth.dao.UserDao;
 import com.lhd.auth.domain.SecurityUser;
+import com.lhd.auth.domain.UserRegisterDTO;
 import com.lhd.auth.entities.User;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.CredentialsExpiredException;
@@ -16,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 
 /**
  * 用户管理业务类
@@ -55,5 +58,13 @@ public class UserServiceImpl implements UserDetailsService {
             throw new CredentialsExpiredException(MessageConstant.CREDENTIALS_EXPIRED);
         }
         return securityUser;
+    }
+
+    public boolean registerUser(UserRegisterDTO userRegisterDTO){
+        User user=new User();
+        BeanUtils.copyProperties(userRegisterDTO,user);
+        user.setWallet(BigDecimal.ZERO);
+        user.setRole("USER");
+        return userDao.registerUser(user)>0;
     }
 }

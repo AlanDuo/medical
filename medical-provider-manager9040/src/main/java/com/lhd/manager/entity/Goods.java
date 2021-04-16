@@ -10,6 +10,8 @@ public class Goods {
 
     private String goodsImg;
 
+    private String introImg;
+
     private String goodsDesc;
 
     private String goodsType;
@@ -31,6 +33,8 @@ public class Goods {
     private Date upTime;
 
     private Date downTime;
+
+    private Integer weight;
 
     public Long getGoodsId() {
         return goodsId;
@@ -54,6 +58,14 @@ public class Goods {
 
     public void setGoodsImg(String goodsImg) {
         this.goodsImg = goodsImg == null ? null : goodsImg.trim();
+    }
+
+    public String getIntroImg() {
+        return introImg;
+    }
+
+    public void setIntroImg(String introImg) {
+        this.introImg = introImg == null ? null : introImg.trim();
     }
 
     public String getGoodsDesc() {
@@ -142,5 +154,13 @@ public class Goods {
 
     public void setDownTime(Date downTime) {
         this.downTime = downTime;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
     }
 }

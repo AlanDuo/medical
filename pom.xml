@@ -20,6 +20,7 @@
         <module>medical-provider-manager9040</module>
         <module>medical-provider-encyclopedias9030</module>
         <module>medical-provider-doctor9025</module>
+        <module>medical-common-api</module>
     </modules>
     <packaging>pom</packaging>
 

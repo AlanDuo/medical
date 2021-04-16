@@ -23,6 +23,9 @@ import reactor.core.publisher.Mono;
 
 /**
  * 资源服务器配置
+ *
+ * @author alan
+ * @date 2021/4/15
  */
 @AllArgsConstructor
 @Configuration
@@ -44,7 +47,9 @@ public class ResourceServerConfig {
         http.addFilterBefore(ignoreUrlsRemoveJwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);
         http.authorizeExchange()
                 .pathMatchers(ArrayUtil.toArray(ignoreUrlsConfig.getUrls(),String.class)).permitAll()//白名单配置
-                .pathMatchers("/api/hello","/api/user/currentUser").hasRole("ADMIN")
+                .pathMatchers("/api/hello","/api/user/currentUser","/manager/**").hasRole("ADMIN")
+                .pathMatchers("/doctor/**").hasRole("DOCTOR")
+                .pathMatchers("/user/**","/consultation/**","/encyclopedias/**").hasRole("USER")
                 //.anyExchange().access(authorizationManager)//鉴权管理器配置
                 .and().exceptionHandling()
                 .accessDeniedHandler(restfulAccessDeniedHandler)//处理未授权

@@ -306,6 +306,76 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
+        public Criteria andIntroImgIsNull() {
+            addCriterion("intro_img is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgIsNotNull() {
+            addCriterion("intro_img is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgEqualTo(String value) {
+            addCriterion("intro_img =", value, "introImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgNotEqualTo(String value) {
+            addCriterion("intro_img <>", value, "introImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgGreaterThan(String value) {
+            addCriterion("intro_img >", value, "introImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgGreaterThanOrEqualTo(String value) {
+            addCriterion("intro_img >=", value, "introImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgLessThan(String value) {
+            addCriterion("intro_img <", value, "introImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgLessThanOrEqualTo(String value) {
+            addCriterion("intro_img <=", value, "introImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgLike(String value) {
+            addCriterion("intro_img like", value, "introImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgNotLike(String value) {
+            addCriterion("intro_img not like", value, "introImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgIn(List<String> values) {
+            addCriterion("intro_img in", values, "introImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgNotIn(List<String> values) {
+            addCriterion("intro_img not in", values, "introImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgBetween(String value1, String value2) {
+            addCriterion("intro_img between", value1, value2, "introImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroImgNotBetween(String value1, String value2) {
+            addCriterion("intro_img not between", value1, value2, "introImg");
+            return (Criteria) this;
+        }
+
         public Criteria andGoodsDescIsNull() {
             addCriterion("goods_desc is null");
             return (Criteria) this;
@@ -1003,6 +1073,66 @@ public class GoodsExample {
 
         public Criteria andDownTimeNotBetween(Date value1, Date value2) {
             addCriterion("down_time not between", value1, value2, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightIsNull() {
+            addCriterion("weight is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightIsNotNull() {
+            addCriterion("weight is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightEqualTo(Integer value) {
+            addCriterion("weight =", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightNotEqualTo(Integer value) {
+            addCriterion("weight <>", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightGreaterThan(Integer value) {
+            addCriterion("weight >", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightGreaterThanOrEqualTo(Integer value) {
+            addCriterion("weight >=", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightLessThan(Integer value) {
+            addCriterion("weight <", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightLessThanOrEqualTo(Integer value) {
+            addCriterion("weight <=", value, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightIn(List<Integer> values) {
+            addCriterion("weight in", values, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightNotIn(List<Integer> values) {
+            addCriterion("weight not in", values, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightBetween(Integer value1, Integer value2) {
+            addCriterion("weight between", value1, value2, "weight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeightNotBetween(Integer value1, Integer value2) {
+            addCriterion("weight not between", value1, value2, "weight");
             return (Criteria) this;
         }
     }

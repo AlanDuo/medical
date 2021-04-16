@@ -2,14 +2,13 @@ package com.lhd.auth.controller;
 
 import com.lhd.auth.api.CommonResult;
 import com.lhd.auth.domain.Oauth2TokenDto;
+import com.lhd.auth.domain.UserRegisterDTO;
+import com.lhd.auth.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.Map;
@@ -20,9 +19,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/oauth")
 public class AuthController {
-
     @Autowired
     private TokenEndpoint tokenEndpoint;
+    @Autowired
+    private UserServiceImpl userService;
 
     /**
      * Oauth2登录认证
@@ -39,4 +39,10 @@ public class AuthController {
 
         return CommonResult.success(oauth2TokenDto);
     }
+    @PostMapping("/register")
+    public CommonResult<String> registerUser(@RequestBody UserRegisterDTO registerDTO){
+        userService.registerUser(registerDTO);
+        return CommonResult.success("ok");
+    }
+
 }

@@ -1,4 +1,4 @@
 
-U	java:S106 "9Replace this use of System.out or System.err by a logger.(ÀşÓÛ8øíÎı‰/
 g
 java:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(™ŞŸ¸8©Îªşú.
+U	java:S106 "9Replace this use of System.out or System.err by a logger.(ÀşÓÛ8øíÎı‰/

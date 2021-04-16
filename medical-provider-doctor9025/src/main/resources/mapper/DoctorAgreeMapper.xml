@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lhd.doctor.dao.DoctorAgreeMapper" >
+  <resultMap id="BaseResultMap" type="com.lhd.doctor.entity.DoctorAgree" >
+    <id column="agree_id" property="agreeId" jdbcType="BIGINT" />
+    <result column="goods_id" property="goodsId" jdbcType="BIGINT" />
+    <result column="dcotor_id" property="dcotorId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    agree_id, goods_id, dcotor_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lhd.doctor.entity.DoctorAgreeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from doctor_agree
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from doctor_agree
+    where agree_id = #{agreeId,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectByGoodsIdAndDoctorId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from doctor_agree
+    where goods_id = #{goodsId,jdbcType=BIGINT} and doctor_id=#{doctorId,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from doctor_agree
+    where agree_id = #{agreeId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lhd.doctor.entity.DoctorAgreeExample" >
+    delete from doctor_agree
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lhd.doctor.entity.DoctorAgree" >
+    insert into doctor_agree (agree_id, goods_id, dcotor_id
+      )
+    values (#{agreeId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, #{dcotorId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lhd.doctor.entity.DoctorAgree" >
+    insert into doctor_agree
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="agreeId != null" >
+        agree_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="dcotorId != null" >
+        dcotor_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="agreeId != null" >
+        #{agreeId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="dcotorId != null" >
+        #{dcotorId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lhd.doctor.entity.DoctorAgreeExample" resultType="java.lang.Integer" >
+    select count(*) from doctor_agree
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update doctor_agree
+    <set >
+      <if test="record.agreeId != null" >
+        agree_id = #{record.agreeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.goodsId != null" >
+        goods_id = #{record.goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="record.dcotorId != null" >
+        dcotor_id = #{record.dcotorId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update doctor_agree
+    set agree_id = #{record.agreeId,jdbcType=BIGINT},
+      goods_id = #{record.goodsId,jdbcType=BIGINT},
+      dcotor_id = #{record.dcotorId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhd.doctor.entity.DoctorAgree" >
+    update doctor_agree
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="dcotorId != null" >
+        dcotor_id = #{dcotorId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where agree_id = #{agreeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhd.doctor.entity.DoctorAgree" >
+    update doctor_agree
+    set goods_id = #{goodsId,jdbcType=BIGINT},
+      dcotor_id = #{dcotorId,jdbcType=BIGINT}
+    where agree_id = #{agreeId,jdbcType=BIGINT}
+  </update>
+</mapper>

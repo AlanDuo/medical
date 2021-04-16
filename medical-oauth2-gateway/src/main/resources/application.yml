@@ -23,14 +23,36 @@ spring:
             - Path=/auth/**
           filters:
             - StripPrefix=1
-        - id: oauth-manager-route
+        - id: oauth2-common-api
+          uri: lb://medical-common-api
+          predicates:
+            - Path=/common/**
+          filters:
+            - StripPrefix=1
+        - id: oauth2-manager-route
           uri: lb://medical-provider-manager
           predicates:
             - Path=/manager/**
-        - id: oauth2-consumer-shop
+        - id: oauth2-shop-route
           uri: lb://medical-consumer-shop
           predicates:
             - Path=/shop/**
+        - id: oauth2-user-route
+          uri: lb://medical-provider-user
+          predicates:
+            - Path=/user/**
+        - id: oauth2-consultation-route
+          uri: lb://medical-provider-consultation
+          predicates:
+            - Path=/consultation/**
+        - id: oauth2-encyclopedias-route
+          uri: lb://medical-provider-encyclopedias
+          predicates:
+            - Path=/encyclopedias/**
+        - id: oauth2-doctor-route
+          uri: lb://medical-provider-doctor
+          predicates:
+            - Path=/doctor/**
       discovery:
         locator:
           enabled: true #开启从注册中心动态创建路由的功能
@@ -50,5 +72,4 @@ secure:
     urls: #配置白名单路径
       - "/actuator/**"
       - "/auth/oauth/token"
-      - "/shop/**"
-      - "/manager/**"
+      - "/common/**"

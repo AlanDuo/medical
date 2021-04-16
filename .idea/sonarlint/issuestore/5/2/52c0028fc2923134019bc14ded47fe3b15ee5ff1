@@ -1,0 +1,41 @@
+
+`
+java:S1192½"IDefine a constant instead of duplicating this literal "payTime" 10 times.(Ú¬ï
+a
+java:S1192³"JDefine a constant instead of duplicating this literal "orderNum" 10 times.(êâÊ“
+o
+java:S2293H"YReplace the type specification in this constructor call with the diamond operator ("<>").(óÎ³Ù
+e
+java:S1192ÿ"NDefine a constant instead of duplicating this literal "logisticsNum" 12 times.(Í…êş
+Z	java:S112g"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
+
+`
+java:S1192ï"IDefine a constant instead of duplicating this literal "goodsId" 10 times.(ìæ¾
+d
+java:S1192Å"HDefine a constant instead of duplicating this literal "status" 10 times.(Æ‹óÁùÿÿÿÿ
+h
+java:S1192"LDefine a constant instead of duplicating this literal "createTime" 10 times.(·í“°øÿÿÿÿ
+n
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÏßÉe
+`	java:S112Y"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
+e
+java:S1192¹"IDefine a constant instead of duplicating this literal "address" 12 times.(°³«Ïøÿÿÿÿ
+_
+java:S1192ñ"HDefine a constant instead of duplicating this literal "userId" 10 times.(İ§‰ 
+`	java:S112`"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºşÿÿÿÿ
+_
+java:S1192w"IDefine a constant instead of duplicating this literal "orderId" 10 times.(ÄæíÃ
+v
+java:S14889"`Immediately return this expression instead of assigning it to the temporary variable "criteria".(¶Õ¯ì
+h
+java:S1192ñ"LDefine a constant instead of duplicating this literal "finishTime" 10 times.(…îÂõıÿÿÿÿ
+i
+java:S1192µ"MDefine a constant instead of duplicating this literal "receiveTime" 10 times.(˜ úÿÿÿÿ
+d
+java:S1192ù"MDefine a constant instead of duplicating this literal "deliverTime" 10 times.(Ò¸½
+n
+java:S1192«"KDefine a constant instead of duplicating this literal "goodsName" 12 times.(è‚‡Ÿûÿÿÿÿ8ƒ‚ÌŸ…/
+j
+java:S1192ó"GDefine a constant instead of duplicating this literal "phone" 12 times.(ºÔñŠÿÿÿÿÿ8ƒ‚ÌŸ…/
+m
+java:S1192­"JDefine a constant instead of duplicating this literal "username" 12 times.(×œÚşÿÿÿÿ8ƒ‚ÌŸ…/

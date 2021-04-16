@@ -34,6 +34,8 @@ public class Goods {
 
     private Date downTime;
 
+    private Integer weight;
+
     public Long getGoodsId() {
         return goodsId;
     }
@@ -152,5 +154,13 @@ public class Goods {
 
     public void setDownTime(Date downTime) {
         this.downTime = downTime;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
     }
 }

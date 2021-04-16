@@ -1,0 +1,23 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /common
+spring:
+  application:
+    name: medical-common-api
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.113.184.197:8848
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+file:
+  staticAccessPath: /static/image/**
+  uploadFolder: C://image/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

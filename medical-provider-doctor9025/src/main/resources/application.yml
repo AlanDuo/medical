@@ -1,5 +1,7 @@
 server:
   port: 9025
+  servlet:
+    context-path: /doctor
 spring:
   application:
     name: medical-provider-doctor
@@ -28,7 +30,6 @@ spring:
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml
-
 management:
   endpoints:
     web:

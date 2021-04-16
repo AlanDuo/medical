@@ -1,8 +1,10 @@
 server:
   port: 9020
+  servlet:
+    context-path: /consultation
 spring:
   application:
-    name: medical-provider-cosultation
+    name: medical-provider-consultation
   cloud:
     nacos:
       discovery:

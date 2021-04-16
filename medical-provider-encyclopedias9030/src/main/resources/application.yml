@@ -1,5 +1,7 @@
 server:
   port: 9030
+  servlet:
+    context-path: /encyclopedias
 spring:
   application:
     name: medical-provider-encyclopedias
