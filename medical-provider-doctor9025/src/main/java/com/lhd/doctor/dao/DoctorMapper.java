@@ -20,6 +20,8 @@ public interface DoctorMapper {
 
     Doctor selectByPrimaryKey(Long doctorId);
 
+    Doctor selectByUserId(Long userId);
+
     int updateByExampleSelective(@Param("record") Doctor record, @Param("example") DoctorExample example);
 
     int updateByExample(@Param("record") Doctor record, @Param("example") DoctorExample example);

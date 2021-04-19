@@ -49,7 +49,7 @@ public class ResourceServerConfig {
                 .pathMatchers(ArrayUtil.toArray(ignoreUrlsConfig.getUrls(),String.class)).permitAll()//白名单配置
                 .pathMatchers("/api/hello","/api/user/currentUser","/manager/**").hasRole("ADMIN")
                 .pathMatchers("/doctor/**").hasRole("DOCTOR")
-                .pathMatchers("/user/**","/consultation/**","/encyclopedias/**").hasRole("USER")
+                .pathMatchers("/user/**","/consultation/**","/encyclopedias/**","/shop/**").hasRole("USER")
                 //.anyExchange().access(authorizationManager)//鉴权管理器配置
                 .and().exceptionHandling()
                 .accessDeniedHandler(restfulAccessDeniedHandler)//处理未授权

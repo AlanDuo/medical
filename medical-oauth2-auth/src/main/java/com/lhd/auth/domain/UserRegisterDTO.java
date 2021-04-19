@@ -21,4 +21,5 @@ public class UserRegisterDTO implements Serializable {
     private String idCard;
     private Byte gender;
     private Date birthday;
+    private String role;
 }

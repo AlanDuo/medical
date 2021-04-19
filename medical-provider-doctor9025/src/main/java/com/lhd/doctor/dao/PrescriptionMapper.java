@@ -20,6 +20,8 @@ public interface PrescriptionMapper {
 
     Prescription selectByPrimaryKey(Long prescriptionId);
 
+    Prescription selectByOrderId(Long orderId);
+
     int updateByExampleSelective(@Param("record") Prescription record, @Param("example") PrescriptionExample example);
 
     int updateByExample(@Param("record") Prescription record, @Param("example") PrescriptionExample example);

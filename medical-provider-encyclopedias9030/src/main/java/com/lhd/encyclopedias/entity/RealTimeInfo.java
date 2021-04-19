@@ -11,6 +11,8 @@ public class RealTimeInfo {
 
     private String infoType;
 
+    private String pic;
+
     private Date pushTime;
 
     private Byte status;
@@ -47,6 +49,14 @@ public class RealTimeInfo {
 
     public void setInfoType(String infoType) {
         this.infoType = infoType == null ? null : infoType.trim();
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic == null ? null : pic.trim();
     }
 
     public Date getPushTime() {

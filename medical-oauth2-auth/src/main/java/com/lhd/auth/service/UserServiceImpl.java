@@ -25,26 +25,13 @@ import java.math.BigDecimal;
  */
 @Service
 public class UserServiceImpl implements UserDetailsService {
-    //private List<UserDTO> userList;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Resource
     private UserDao userDao;
 
-    /*@PostConstruct
-    public void initData() {
-        String password = passwordEncoder.encode("123456");
-        userList = new ArrayList<>();
-        userList.add(new UserDTO(1L,"macro", password,1, CollUtil.toList("ADMIN")));
-        userList.add(new UserDTO(2L,"andy", password,1, CollUtil.toList("TEST")));
-    }*/
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        /*List<UserDTO> findUserList = userList.stream().filter(item -> item.getUsername().equals(username)).collect(Collectors.toList());
-        if (CollUtil.isEmpty(findUserList)) {
-            throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);
-        }*/
 
         User user=userDao.selectUserByPhone(username);
         SecurityUser securityUser = new SecurityUser(user);
@@ -64,7 +51,7 @@ public class UserServiceImpl implements UserDetailsService {
         User user=new User();
         BeanUtils.copyProperties(userRegisterDTO,user);
         user.setWallet(BigDecimal.ZERO);
-        user.setRole("USER");
+        user.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
         return userDao.registerUser(user)>0;
     }
 }

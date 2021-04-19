@@ -26,7 +26,7 @@ public class EncyclopediasServiceImpl implements EncyclopediasService {
     @Override
     public Map<String, Object> searchNewsList(String type) {
         RealTimeInfoExample infoExample=new RealTimeInfoExample();
-        infoExample.setOrderByClause("DESC push_time");
+        infoExample.setOrderByClause("push_time desc");
         RealTimeInfoExample.Criteria criteria=infoExample.createCriteria();
         if(null!=type && !"".equals(type.trim())){
             criteria.andInfoTypeLike("%"+type+"%");
