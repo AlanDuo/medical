@@ -18,5 +18,7 @@ public class NewsAddDTO implements Serializable {
 
     private String infoType;
 
+    private String pic;
+
     private String infoContent;
 }

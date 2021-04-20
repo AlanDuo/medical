@@ -3,6 +3,7 @@ package com.lhd.user.controller;
 import com.lhd.user.common.ResponseData;
 import com.lhd.user.dto.FeedbackDTO;
 import com.lhd.user.dto.UserDTO;
+import com.lhd.user.dto.UserRegisterDTO;
 import com.lhd.user.entities.User;
 import com.lhd.user.handler.LoginUserHolder;
 import com.lhd.user.service.UserService;
@@ -24,6 +25,13 @@ public class UserController {
         this.loginUserHolder=loginUserHolder;
     }
 
+    @PostMapping("/register")
+    public ResponseData registerUser(UserRegisterDTO registerDTO){
+        System.out.println(registerDTO.getUsername());
+        userService.registerUser(registerDTO);
+        return ResponseData.ok();
+    }
+
     @GetMapping("/info")
     public ResponseData userInfo(){
         UserDTO userDTO=loginUserHolder.getCurrentUser();
@@ -31,7 +39,7 @@ public class UserController {
         return ResponseData.ok().putDataValue(user);
     }
     @PostMapping("/feedback")
-    public ResponseData newFeedback(@RequestBody FeedbackDTO feedbackDTO){
+    public ResponseData newFeedback(FeedbackDTO feedbackDTO){
         if(userService.addFeedback(feedbackDTO)) {
             return ResponseData.ok();
         }

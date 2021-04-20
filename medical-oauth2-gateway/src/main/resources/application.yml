@@ -27,8 +27,6 @@ spring:
           uri: lb://medical-common-api
           predicates:
             - Path=/common/**
-          filters:
-            - StripPrefix=1
         - id: oauth2-manager-route
           uri: lb://medical-provider-manager
           predicates:
@@ -72,4 +70,6 @@ secure:
     urls: #配置白名单路径
       - "/actuator/**"
       - "/auth/oauth/**"
+      - "/user/user/register"
+      - "/manager/**"
       - "/common/**"

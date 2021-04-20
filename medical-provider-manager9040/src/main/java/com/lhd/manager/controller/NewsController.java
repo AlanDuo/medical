@@ -24,6 +24,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/news")
+//@CrossOrigin
 public class NewsController {
     private static final Logger LOGGER=LoggerFactory.getLogger(NewsController.class);
     private NewsService newsService;

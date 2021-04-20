@@ -2,8 +2,6 @@ package com.lhd.auth.controller;
 
 import com.lhd.auth.api.CommonResult;
 import com.lhd.auth.domain.Oauth2TokenDto;
-import com.lhd.auth.domain.UserRegisterDTO;
-import com.lhd.auth.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
@@ -18,11 +16,10 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/oauth")
+//@CrossOrigin
 public class AuthController {
     @Autowired
     private TokenEndpoint tokenEndpoint;
-    @Autowired
-    private UserServiceImpl userService;
 
     /**
      * Oauth2登录认证
@@ -38,11 +35,6 @@ public class AuthController {
                 .tokenHead("Bearer ").build();
 
         return CommonResult.success(oauth2TokenDto);
-    }
-    @PostMapping("/register")
-    public CommonResult<String> registerUser(@RequestBody UserRegisterDTO registerDTO){
-        userService.registerUser(registerDTO);
-        return CommonResult.success("ok");
     }
 
 }

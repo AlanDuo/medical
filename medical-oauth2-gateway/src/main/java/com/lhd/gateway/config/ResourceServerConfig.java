@@ -47,11 +47,12 @@ public class ResourceServerConfig {
         http.addFilterBefore(ignoreUrlsRemoveJwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);
         http.authorizeExchange()
                 .pathMatchers(ArrayUtil.toArray(ignoreUrlsConfig.getUrls(),String.class)).permitAll()//白名单配置
-                .pathMatchers("/api/hello","/api/user/currentUser","/manager/**").hasRole("ADMIN")
+                .pathMatchers("/api/hello","/api/user/currentUser").hasRole("ADMIN")
                 .pathMatchers("/doctor/**").hasRole("DOCTOR")
                 .pathMatchers("/user/**","/consultation/**","/encyclopedias/**","/shop/**").hasRole("USER")
                 //.anyExchange().access(authorizationManager)//鉴权管理器配置
-                .and().exceptionHandling()
+                .and()
+                .exceptionHandling()
                 .accessDeniedHandler(restfulAccessDeniedHandler)//处理未授权
                 .authenticationEntryPoint(restAuthenticationEntryPoint)//处理未认证
                 .and().csrf().disable();

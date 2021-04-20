@@ -30,7 +30,7 @@ public class NewsServiceImpl implements NewsService {
         RealTimeInfo info=new RealTimeInfo();
         BeanUtils.copyProperties(newsAddDTO,info);
         info.setPushTime(new Date());
-        byte status=0;
+        byte status=1;
         info.setStatus(status);
         return infoMapper.insertSelective(info)>0;
     }

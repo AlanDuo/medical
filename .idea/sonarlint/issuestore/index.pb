@@ -715,8 +715,6 @@ n
 >medical-provider-doctor9025/src/main/resources/application.yml,8\9\89a6902dc4b79d7ccdc7226828a450d407ac52c5
 l
 <medical-provider-doctor9025/src/main/resources/generator.xml,9\0\90808b230976f0f5cea24bf140982cedc89a585d
-m
-=medical-provider-manager9040/src/main/resources/generator.xml,f\2\f20753741524d29add31d5705f1f2fdeea205045
 j
 :medical-provider-shop9001/src/main/resources/generator.xml,e\b\ebb760a75c003290ca19efe545fee33c951eb545
 
@@ -741,3 +739,11 @@ Kmedical-provider-doctor9025/src/main/java/com/lhd/doctor/vo/MaterialVO.java,b\
 Omedical-provider-doctor9025/src/main/java/com/lhd/doctor/vo/PrescriptionVO.java,b\7\b7f7af209bb3e7a0a80411ab41b724a6b8ad7021
 
 Omedical-provider-doctor9025/src/main/java/com/lhd/doctor/vo/ConsultationVO.java,e\0\e048e56ab79113409f7effbf4e2cf83cb2fac883
+h
+8medical-oauth2-auth/target/classes/mapper/UserMapper.xml,1\1\11f2eeb9064e1b32a650503b434cb3ceb18723fe
+v
+Fmedical-provider-doctor9025/src/main/resources/mapper/DoctorMapper.xml,6\e\6e77b17437f545fd26589ef27aef570f5778e1af
+|
+Lmedical-provider-doctor9025/src/main/resources/mapper/PrescriptionMapper.xml,5\1\5178f23edde3fc98aca753f8f9e1d3c771f3a2bb
+ƒ
+Smedical-provider-encyclopedias9030/src/main/resources/mapper/RealTimeInfoMapper.xml,f\8\f8f904c0b2074cdb4118221039495790dc570f3a

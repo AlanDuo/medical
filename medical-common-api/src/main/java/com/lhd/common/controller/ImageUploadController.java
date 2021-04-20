@@ -2,6 +2,7 @@ package com.lhd.common.controller;
 
 import com.lhd.common.util.ImgUploadUtil;
 import org.springframework.http.HttpRequest;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/img")
+@CrossOrigin
 public class ImageUploadController {
 
 

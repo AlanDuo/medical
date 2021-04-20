@@ -18,7 +18,6 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class ShopCartVO implements Serializable {
 
-
     private Long userId;
 
     private Long goodsId;
@@ -29,7 +28,7 @@ public class ShopCartVO implements Serializable {
 
     private String goodsDesc;
 
-    private BigDecimal purchasePrice;
+    private BigDecimal wholesalePrice;
 
     private Integer amount;
 }
