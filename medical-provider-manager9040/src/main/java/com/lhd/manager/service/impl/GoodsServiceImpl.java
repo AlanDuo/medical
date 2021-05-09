@@ -28,6 +28,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public Map<String,Object> getGoodsList(String goodsName, String goodsDesc, String goodsType, String goodsPurpose, String goodsSource, Byte status) {
         GoodsExample goodsExample=new GoodsExample();
+        goodsExample.setOrderByClause("weight desc");
         GoodsExample.Criteria goodsCriteria=goodsExample.createCriteria();
         if(null!=goodsName && !"".equals(goodsName.trim())){
             goodsCriteria.andGoodsNameLike("%"+goodsName+"%");
@@ -78,6 +79,7 @@ public class GoodsServiceImpl implements GoodsService {
         goods.setPurchaseTime(new Date());
         byte status=0;
         goods.setStatus(status);
+        goods.setWeight(0);
         return goodsMapper.insertSelective(goods)>0;
     }
 

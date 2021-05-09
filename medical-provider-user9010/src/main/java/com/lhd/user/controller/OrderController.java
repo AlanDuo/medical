@@ -25,18 +25,21 @@ import java.util.Map;
 @RequestMapping("/order")
 public class OrderController {
     private OrderService orderService;
+    private LoginUserHolder loginUserHolder;
     @Autowired
     private OrderController(OrderService orderService, LoginUserHolder loginUserHolder){
         this.orderService=orderService;
+        this.loginUserHolder=loginUserHolder;
     }
 
     /**
      * ================商城订单==============
      */
 
-    @GetMapping("/shopOrderList")
-    public TableVO shopOrderList(Long userId,Byte status,@RequestParam(value = "page",defaultValue = "1") Integer page,
+    @GetMapping("/shopOrderList/{status}")
+    public TableVO shopOrderList(@PathVariable("status") Byte status,@RequestParam(value = "page",defaultValue = "1") Integer page,
                                  @RequestParam(value = "page",defaultValue = "20") Integer limit){
+        Long userId=loginUserHolder.getCurrentUser().getId();
         PageHelper.startPage(page,limit);
         Map<String,Object> map=orderService.getShopOrderList(userId,status);
         PageInfo pageInfo=(PageInfo)map.get("pageInfo");

@@ -12,6 +12,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -29,6 +30,7 @@ public class UserServiceImpl implements UserService {
     private FeedbackMapper feedbackMapper;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean registerUser(UserRegisterDTO userRegisterDTO){
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         User user=new User();
@@ -50,6 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean addFeedback(FeedbackDTO feedbackDTO) {
         if(null==feedbackDTO || null==feedbackDTO.getUserId() || null==feedbackDTO.getContent() || 0==feedbackDTO.getUserId()) {
             return false;

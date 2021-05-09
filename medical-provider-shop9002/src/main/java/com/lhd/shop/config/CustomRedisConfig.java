@@ -20,6 +20,7 @@ import java.time.Duration;
 
 /**
  * @author alan
+ * @date 2020/2/22
  */
 @Configuration
 public class CustomRedisConfig {

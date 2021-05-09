@@ -417,8 +417,6 @@ w
 Gmedical-provider-manager9040/src/main/resources/mapper/DoctorMapper.xml,9\c\9c34f9961c6e0e0757777e8f2de98a2e5dfb6ae2
 y
 Imedical-provider-manager9040/src/main/resources/mapper/FeedbackMapper.xml,3\a\3a035946cd3ea8c71d773711cfdba2002bbe3524
-v
-Fmedical-provider-manager9040/src/main/resources/mapper/GoodsMapper.xml,6\5\6562b72ce18995216c3ea1d4c778707579db0f95
 z
 Jmedical-provider-manager9040/src/main/resources/mapper/ShopOrderMapper.xml,8\9\897bb46511c8dacece32024f22241486f5efb68e
 u
@@ -577,8 +575,6 @@ Ymedical-consumer-shop8001/src/main/java/com/lhd/shop/service/ShopCartFallbackSe
 Tmedical-consumer-shop8001/src/main/java/com/lhd/shop/controller/OrderController.java,6\b\6b54803a0419e4bb70a23a9fe7f6403c0df51f6e
 á
 Wmedical-consumer-shop8001/src/main/java/com/lhd/shop/controller/ShopCartController.java,e\f\efa50b78cc663fc17bc693c46968b2888fda8697
-j
-:medical-provider-user9010/src/main/resources/generator.xml,8\5\850426efd5fe412389496a46d9237f7334c2ae20
 î
 dmedical-provider-encyclopedias9030/src/main/java/com/lhd/encyclopedias/config/CustomRedisConfig.java,3\6\368a8ee11e9658fd309e0e11ed36ddd3f4fa7725
 è
@@ -697,8 +693,6 @@ Y
 )medical-common-api/medical-common-api.iml,7\c\7c6d40f748710a8ccfb2a2a4beae84e3102fb36e
 l
 <medical-oauth2-auth/src/main/resources/mapper/UserMapper.xml,8\e\8e5c2448dfc46c7898c23ee582d34cc91dfd08b7
-t
-Dmedical-provider-consultation9020/src/main/resources/application.yml,a\5\a5da9872f7040e08e920584d8e3cc44f58edae66
 É
 Smedical-provider-doctor9025/src/main/java/com/lhd/doctor/dao/DoctorAgreeMapper.java,a\6\a6f0c4ffbcb4dfa34a76d087db3cc63742bb491e
 y
@@ -747,3 +741,15 @@ Fmedical-provider-doctor9025/src/main/resources/mapper/DoctorMapper.xml,6\e\6e7
 Lmedical-provider-doctor9025/src/main/resources/mapper/PrescriptionMapper.xml,5\1\5178f23edde3fc98aca753f8f9e1d3c771f3a2bb
 É
 Smedical-provider-encyclopedias9030/src/main/resources/mapper/RealTimeInfoMapper.xml,f\8\f8f904c0b2074cdb4118221039495790dc570f3a
+Å
+Qmedical-oauth2-auth/src/main/java/com/lhd/auth/controller/RegisterController.java,a\2\a2bc20956f8b9e750cab9f5bdc461824b773463d
+w
+Gmedical-oauth2-auth/src/main/java/com/lhd/auth/service/UserService.java,5\f\5f77f89b757486f72d8faa6c4c880b340a8e8fa2
+m
+=medical-provider-manager9040/src/main/resources/generator.xml,f\2\f20753741524d29add31d5705f1f2fdeea205045
+}
+Mmedical-provider-user9010/src/main/java/com/lhd/user/dto/UserRegisterDTO.java,d\6\d6ec7550c752d9e16c2fd6530eb90651c3fde56c
+|
+Lmedical-provider-shop9001/src/main/java/com/lhd/shop/vo/WaitToPayListVO.java,2\7\27cca4eb6ce99a89dc3298ba5f6681bd2c976414
+Ñ
+Tmedical-provider-shop9002/src/main/java/com/lhd/shop/controller/OrderController.java,d\8\d8ba11a1be9742d279408ba7e972639092219133

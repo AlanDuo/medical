@@ -1,17 +1,17 @@
 
+L
+java:S37405"/Provide the parametrized type for this generic.(¹§®²8’¤/
 Q
 java:S3740B"/Provide the parametrized type for this generic.(„ì’øÿÿÿÿ8’¤/
+L
+java:S1068"*Remove this unused "LOGGER" private field.(õîèÅøÿÿÿÿ8¬¢ìı.
+L
+java:S3740%"/Provide the parametrized type for this generic.( ½„Ğ8’¤/
 Q
 java:S3740:"/Provide the parametrized type for this generic.(ëôüÔùÿÿÿÿ8’¤/
 W
 java:S1128"5Remove this unused import 'com.lhd.user.dto.UserDTO'.(½üÇıÿÿÿÿ8“èÿ¡‹/
-L
-java:S1068"*Remove this unused "LOGGER" private field.(õîèÅøÿÿÿÿ8¬¢ìı.
-c
-java:S1128"ARemove this unused import 'com.lhd.user.handler.LoginUserHolder'.(Ïíşøÿÿÿÿ8ô‘ı¡‹/
-L
-java:S37405"/Provide the parametrized type for this generic.(¹§®²8’¤/
-L
-java:S3740%"/Provide the parametrized type for this generic.( ½„Ğ8’¤/
 Q
 java:S3740*"/Provide the parametrized type for this generic.(­Ûšéüÿÿÿÿ8’¤/
+c
+java:S1128"ARemove this unused import 'com.lhd.user.handler.LoginUserHolder'.(Ïíşøÿÿÿÿ8ô‘ı¡‹/

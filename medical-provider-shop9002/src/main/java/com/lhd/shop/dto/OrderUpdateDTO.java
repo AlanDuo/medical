@@ -5,29 +5,16 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 下单
  * @author alan
- * @date 2021/4/1
+ * @Date 2021/4/2
  */
 @Data
-public class OrderAddDTO implements Serializable {
-
-    private Long orderId;
-
+public class OrderUpdateDTO implements Serializable {
     private Long orderNum;
-
-    private Long goodsId;
-
-    private String goodsName;
-
-    private Integer amount;
-
-    private Long userId;
 
     private String username;
 
     private String phone;
 
     private String address;
-
 }

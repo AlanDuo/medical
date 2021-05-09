@@ -36,7 +36,7 @@ public class OrderController {
     }
 
     @PostMapping("/add")
-    public ResponseData addOrder(@RequestBody OrderAddDTO orderAddDTO){
+    public ResponseData addOrder(OrderAddDTO orderAddDTO){
         boolean result=orderService.addOrder(orderAddDTO);
         if(result){
             return ResponseData.ok();

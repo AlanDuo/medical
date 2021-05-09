@@ -1,9 +1,8 @@
 package com.lhd.shop.dao;
 
-import java.util.List;
-
 import com.lhd.shop.entities.Goods;
 import com.lhd.shop.entities.GoodsExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface GoodsMapper {

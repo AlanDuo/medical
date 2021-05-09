@@ -8,15 +8,16 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * 购物车
+ * 等待支付列表
  *
  * @author alan
- * @date 2020/2/22
+ * @date 2021/4/22
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ShopCartVO implements Serializable {
+public class WaitToPayListVO implements Serializable {
+    private  Long orderId;
 
     private Long userId;
 

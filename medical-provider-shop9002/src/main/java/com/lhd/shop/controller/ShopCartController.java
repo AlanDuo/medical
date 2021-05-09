@@ -17,27 +17,23 @@ import java.util.List;
 @RequestMapping("/shopCart")
 public class ShopCartController {
     private ShopCartService shopCartService;
-    private LoginUserHolder loginUserHolder;
     @Autowired
-    public ShopCartController(ShopCartService shopCartService,LoginUserHolder loginUserHolder){
+    public ShopCartController(ShopCartService shopCartService){
         this.shopCartService=shopCartService;
-        this.loginUserHolder=loginUserHolder;
     }
 
     @GetMapping("/shopCartList")
-    public ResponseData shopCartList(){
-        List<ShopCartVO> shopCartVOList=shopCartService.getShopCartList(1L);
+    public ResponseData shopCartList(Long userId){
+        List<ShopCartVO> shopCartVOList=shopCartService.getShopCartList(userId);
         return ResponseData.ok().putDataValue(shopCartVOList);
     }
     @PostMapping("/addToShopCart")
-    public ResponseData addToShopCart(Long goodsId,Integer amount){
-        long userId=loginUserHolder.getCurrentUser().getId();
+    public ResponseData addToShopCart(Long userId,Long goodsId,Integer amount){
         shopCartService.addToShopCart(userId,goodsId,amount);
         return ResponseData.ok();
     }
     @DeleteMapping("/delShopCart")
-    public ResponseData delShopCart(Long goodsId){
-        long userId=loginUserHolder.getCurrentUser().getId();
+    public ResponseData delShopCart(Long userId,Long goodsId){
         shopCartService.delShopCart(userId,goodsId);
         return ResponseData.ok();
     }

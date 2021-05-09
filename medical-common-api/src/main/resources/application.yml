@@ -11,7 +11,9 @@ spring:
         server-addr: 47.113.184.197:8848
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
-
+  servlet:
+    multipart:
+      max-file-size: -1
 file:
   staticAccessPath: /static/image/**
   uploadFolder: C://image/

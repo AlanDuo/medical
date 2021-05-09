@@ -24,6 +24,8 @@ public class GoodsAddDTO implements Serializable {
 
     private String goodsSource;
 
+    private String introImg;
+
     private BigDecimal purchasePrice;
 
     private BigDecimal wholesalePrice;

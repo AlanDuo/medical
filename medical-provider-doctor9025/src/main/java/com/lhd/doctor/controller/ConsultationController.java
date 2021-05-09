@@ -26,4 +26,9 @@ public class ConsultationController {
         consultationService.addPrescription(prescriptionDTO);
         return ResponseData.ok();
     }
+    @PostMapping("/forward_hospital")
+    public ResponseData forwardToHospital(){
+
+        return ResponseData.ok();
+    }
 }

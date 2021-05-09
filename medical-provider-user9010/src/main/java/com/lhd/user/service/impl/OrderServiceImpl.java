@@ -12,6 +12,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,6 +58,7 @@ public class OrderServiceImpl implements OrderService {
                 ShopOrderListVO orderListVO=new ShopOrderListVO();
                 BeanUtils.copyProperties(goods,orderListVO);
                 BeanUtils.copyProperties(shopOrder,orderListVO);
+                orderListVO.setPrice(goods.getWholesalePrice().multiply(new BigDecimal(shopOrder.getAmount())));
                 orderListVOList.add(orderListVO);
             }
         }
@@ -70,10 +72,11 @@ public class OrderServiceImpl implements OrderService {
         if(null!=shopOrder){
             ShopOrderVO shopOrderVO=new ShopOrderVO();
             Goods goods=goodsMapper.selectByPrimaryKey(shopOrder.getGoodsId());
-            BeanUtils.copyProperties(shopOrderVO,shopOrder);
-            BeanUtils.copyProperties(shopOrderVO,goods);
+            BeanUtils.copyProperties(shopOrder,shopOrderVO);
+            BeanUtils.copyProperties(goods,shopOrderVO);
             shopOrderVO.setPrice(goods.getWholesalePrice());
             shopOrderVO.setStatus(shopOrder.getStatus());
+            shopOrderVO.setPrice(goods.getWholesalePrice());
             return shopOrderVO;
         }
         return null;

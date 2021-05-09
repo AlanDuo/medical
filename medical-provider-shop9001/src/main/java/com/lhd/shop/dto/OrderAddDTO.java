@@ -12,11 +12,15 @@ import java.io.Serializable;
 @Data
 public class OrderAddDTO implements Serializable {
 
+    private Long orderId;
+
     private Long orderNum;
 
     private Long goodsId;
 
     private String goodsName;
+
+    private Integer amount;
 
     private Long userId;
 
@@ -25,7 +29,5 @@ public class OrderAddDTO implements Serializable {
     private String phone;
 
     private String address;
-
-    private Integer amount;
 
 }
