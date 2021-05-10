@@ -16,13 +16,15 @@ public class HealthRecordDTO {
 
     private Long userId;
 
+    private String name;
+
     private String relationship;
 
     private String diagnosisName;
 
-    private Date inTime;
+    private String inTime;
 
-    private Date outTime;
+    private String outTime;
 
     private String prescription;
 

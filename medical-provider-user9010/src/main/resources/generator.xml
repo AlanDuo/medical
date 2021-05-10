@@ -40,7 +40,7 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- 指定Table的生成策略 -->
-        <table tableName="shop_order" domainObjectName="ShopOrder"></table>
+        <table tableName="feedback" domainObjectName="Feedback"></table>
 
     </context>
 </generatorConfiguration>

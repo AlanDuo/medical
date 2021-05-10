@@ -225,6 +225,76 @@ public class FeedbackExample {
             return (Criteria) this;
         }
 
+        public Criteria andUsernameIsNull() {
+            addCriterion("username is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameIsNotNull() {
+            addCriterion("username is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameEqualTo(String value) {
+            addCriterion("username =", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotEqualTo(String value) {
+            addCriterion("username <>", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameGreaterThan(String value) {
+            addCriterion("username >", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameGreaterThanOrEqualTo(String value) {
+            addCriterion("username >=", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLessThan(String value) {
+            addCriterion("username <", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLessThanOrEqualTo(String value) {
+            addCriterion("username <=", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLike(String value) {
+            addCriterion("username like", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotLike(String value) {
+            addCriterion("username not like", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameIn(List<String> values) {
+            addCriterion("username in", values, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotIn(List<String> values) {
+            addCriterion("username not in", values, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameBetween(String value1, String value2) {
+            addCriterion("username between", value1, value2, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotBetween(String value1, String value2) {
+            addCriterion("username not between", value1, value2, "username");
+            return (Criteria) this;
+        }
+
         public Criteria andContentIsNull() {
             addCriterion("content is null");
             return (Criteria) this;
@@ -562,6 +632,76 @@ public class FeedbackExample {
 
         public Criteria andHandlerNotBetween(String value1, String value2) {
             addCriterion("handler not between", value1, value2, "handler");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescIsNull() {
+            addCriterion("deal_desc is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescIsNotNull() {
+            addCriterion("deal_desc is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescEqualTo(String value) {
+            addCriterion("deal_desc =", value, "dealDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescNotEqualTo(String value) {
+            addCriterion("deal_desc <>", value, "dealDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescGreaterThan(String value) {
+            addCriterion("deal_desc >", value, "dealDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescGreaterThanOrEqualTo(String value) {
+            addCriterion("deal_desc >=", value, "dealDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescLessThan(String value) {
+            addCriterion("deal_desc <", value, "dealDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescLessThanOrEqualTo(String value) {
+            addCriterion("deal_desc <=", value, "dealDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescLike(String value) {
+            addCriterion("deal_desc like", value, "dealDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescNotLike(String value) {
+            addCriterion("deal_desc not like", value, "dealDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescIn(List<String> values) {
+            addCriterion("deal_desc in", values, "dealDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescNotIn(List<String> values) {
+            addCriterion("deal_desc not in", values, "dealDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescBetween(String value1, String value2) {
+            addCriterion("deal_desc between", value1, value2, "dealDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDealDescNotBetween(String value1, String value2) {
+            addCriterion("deal_desc not between", value1, value2, "dealDesc");
             return (Criteria) this;
         }
 

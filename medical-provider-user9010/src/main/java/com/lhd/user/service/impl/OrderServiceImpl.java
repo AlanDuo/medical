@@ -10,6 +10,7 @@ import com.lhd.user.vo.ShopOrderListVO;
 import com.lhd.user.vo.ShopOrderVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -80,6 +81,14 @@ public class OrderServiceImpl implements OrderService {
             return shopOrderVO;
         }
         return null;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean updateShopOrderStatus(Long orderId, Byte status) {
+        ShopOrder shopOrder=shopOrderMapper.selectByPrimaryKey(orderId);
+        shopOrder.setStatus(status);
+        return shopOrderMapper.updateByPrimaryKeySelective(shopOrder)>0;
     }
 
     /**

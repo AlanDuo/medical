@@ -40,6 +40,8 @@ public class UserController {
     }
     @PostMapping("/feedback")
     public ResponseData newFeedback(FeedbackDTO feedbackDTO){
+        UserDTO userDTO=loginUserHolder.getCurrentUser();
+        feedbackDTO.setUserId(userDTO.getId());
         if(userService.addFeedback(feedbackDTO)) {
             return ResponseData.ok();
         }

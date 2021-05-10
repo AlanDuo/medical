@@ -25,9 +25,11 @@ import java.util.List;
 public class HealthController {
     private static final Logger LOGGER=LoggerFactory.getLogger(HealthController.class);
     private HealthService healthService;
+    private LoginUserHolder loginUserHolder;
     @Autowired
-    public HealthController(HealthService healthService){
+    public HealthController(HealthService healthService,LoginUserHolder loginUserHolder){
         this.healthService=healthService;
+        this.loginUserHolder=loginUserHolder;
     }
 
     /**
@@ -50,7 +52,8 @@ public class HealthController {
      *=============健康档案============
      */
     @GetMapping("/healthRecordList")
-    public ResponseData healthRecordList(Long userId){
+    public ResponseData healthRecordList(){
+        Long userId=loginUserHolder.getCurrentUser().getId();
         List<HealthRecordListVO> recordListVOList=healthService.getHealthRecordList(userId);
         return ResponseData.ok().putDataValue(recordListVOList);
     }
@@ -63,7 +66,9 @@ public class HealthController {
         return ResponseData.error();
     }
     @PostMapping("/addHealthRecord")
-    public ResponseData addHealthRecord(@RequestBody HealthRecordDTO recordDTO){
+    public ResponseData addHealthRecord(HealthRecordDTO recordDTO){
+        Long userId=loginUserHolder.getCurrentUser().getId();
+        recordDTO.setUserId(userId);
         healthService.addHealthRecord(recordDTO);
         return ResponseData.ok();
     }

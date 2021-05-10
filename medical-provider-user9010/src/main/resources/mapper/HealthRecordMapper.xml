@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.lhd.user.entities.HealthRecord" >
     <id column="record_id" property="recordId" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="relationship" property="relationship" jdbcType="VARCHAR" />
     <result column="diagnosis_name" property="diagnosisName" jdbcType="VARCHAR" />
     <result column="in_time" property="inTime" jdbcType="DATE" />
@@ -74,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    record_id, user_id, relationship, diagnosis_name, in_time, out_time, prescription, 
+    record_id, user_id, name, relationship, diagnosis_name, in_time, out_time, prescription, 
     remarks, visit_hospital, treatment_dept, doctor, phone
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lhd.user.entities.HealthRecordExample" >
@@ -108,16 +109,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lhd.user.entities.HealthRecord" >
-    insert into health_record (record_id, user_id, relationship, 
-      diagnosis_name, in_time, out_time, 
-      prescription, remarks, visit_hospital, 
-      treatment_dept, doctor, phone
-      )
-    values (#{recordId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{relationship,jdbcType=VARCHAR}, 
-      #{diagnosisName,jdbcType=VARCHAR}, #{inTime,jdbcType=DATE}, #{outTime,jdbcType=DATE}, 
-      #{prescription,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{visitHospital,jdbcType=VARCHAR}, 
-      #{treatmentDept,jdbcType=VARCHAR}, #{doctor,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}
-      )
+    insert into health_record (record_id, user_id, name, 
+      relationship, diagnosis_name, in_time, 
+      out_time, prescription, remarks, 
+      visit_hospital, treatment_dept, doctor, 
+      phone)
+    values (#{recordId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{relationship,jdbcType=VARCHAR}, #{diagnosisName,jdbcType=VARCHAR}, #{inTime,jdbcType=DATE}, 
+      #{outTime,jdbcType=DATE}, #{prescription,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{visitHospital,jdbcType=VARCHAR}, #{treatmentDept,jdbcType=VARCHAR}, #{doctor,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lhd.user.entities.HealthRecord" >
     insert into health_record
@@ -127,6 +128,9 @@
       </if>
       <if test="userId != null" >
         user_id,
+      </if>
+      <if test="name != null" >
+        name,
       </if>
       <if test="relationship != null" >
         relationship,
@@ -165,6 +169,9 @@
       </if>
       <if test="userId != null" >
         #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="relationship != null" >
         #{relationship,jdbcType=VARCHAR},
@@ -213,6 +220,9 @@
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
       <if test="record.relationship != null" >
         relationship = #{record.relationship,jdbcType=VARCHAR},
       </if>
@@ -252,6 +262,7 @@
     update health_record
     set record_id = #{record.recordId,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
       relationship = #{record.relationship,jdbcType=VARCHAR},
       diagnosis_name = #{record.diagnosisName,jdbcType=VARCHAR},
       in_time = #{record.inTime,jdbcType=DATE},
@@ -271,6 +282,9 @@
     <set >
       <if test="userId != null" >
         user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="relationship != null" >
         relationship = #{relationship,jdbcType=VARCHAR},
@@ -308,6 +322,7 @@
   <update id="updateByPrimaryKey" parameterType="com.lhd.user.entities.HealthRecord" >
     update health_record
     set user_id = #{userId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
       relationship = #{relationship,jdbcType=VARCHAR},
       diagnosis_name = #{diagnosisName,jdbcType=VARCHAR},
       in_time = #{inTime,jdbcType=DATE},

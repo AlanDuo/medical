@@ -1,5 +1,6 @@
 package com.lhd.user.service.impl;
 
+import cn.hutool.core.convert.Convert;
 import com.lhd.user.dao.*;
 import com.lhd.user.dto.HealthRecordDTO;
 import com.lhd.user.entities.*;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -111,7 +113,10 @@ public class HealthServiceImpl implements HealthService {
     public boolean addHealthRecord(HealthRecordDTO recordDTO) {
         HealthRecord record=new HealthRecord();
         BeanUtils.copyProperties(recordDTO,record);
-
+        Date inTime = Convert.toDate(recordDTO.getInTime());
+        Date outTime=Convert.toDate(recordDTO.getOutTime());
+        record.setInTime(inTime);
+        record.setOutTime(outTime);
         return recordMapper.insertSelective(record)>0;
     }
 }

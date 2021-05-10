@@ -7,6 +7,8 @@ public class Feedback {
 
     private Long userId;
 
+    private String username;
+
     private String content;
 
     private String contact;
@@ -16,6 +18,8 @@ public class Feedback {
     private Byte status;
 
     private String handler;
+
+    private String dealDesc;
 
     private Date addTime;
 
@@ -35,6 +39,14 @@ public class Feedback {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
     public String getContent() {
@@ -75,6 +87,14 @@ public class Feedback {
 
     public void setHandler(String handler) {
         this.handler = handler == null ? null : handler.trim();
+    }
+
+    public String getDealDesc() {
+        return dealDesc;
+    }
+
+    public void setDealDesc(String dealDesc) {
+        this.dealDesc = dealDesc == null ? null : dealDesc.trim();
     }
 
     public Date getAddTime() {

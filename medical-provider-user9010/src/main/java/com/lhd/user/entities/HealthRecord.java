@@ -7,6 +7,8 @@ public class HealthRecord {
 
     private Long userId;
 
+    private String name;
+
     private String relationship;
 
     private String diagnosisName;
@@ -41,6 +43,14 @@ public class HealthRecord {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public String getRelationship() {

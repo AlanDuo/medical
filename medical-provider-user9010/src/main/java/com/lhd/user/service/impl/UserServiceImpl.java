@@ -59,9 +59,11 @@ public class UserServiceImpl implements UserService {
         }
         Feedback feedback=new Feedback();
         BeanUtils.copyProperties(feedbackDTO,feedback);
+        User user=getUserById(feedbackDTO.getUserId());
         byte status=0;
         feedback.setStatus(status);
         feedback.setAddTime(new Date());
+        feedback.setUsername(user.getUsername());
         return feedbackMapper.insertSelective(feedback)>0;
     }
 }

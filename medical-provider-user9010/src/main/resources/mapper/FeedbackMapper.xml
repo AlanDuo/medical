@@ -4,11 +4,13 @@
   <resultMap id="BaseResultMap" type="com.lhd.user.entities.Feedback" >
     <id column="feedback_id" property="feedbackId" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="contact" property="contact" jdbcType="VARCHAR" />
     <result column="picture" property="picture" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="TINYINT" />
     <result column="handler" property="handler" jdbcType="VARCHAR" />
+    <result column="deal_desc" property="dealDesc" jdbcType="VARCHAR" />
     <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
     <result column="deal_time" property="dealTime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -71,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    feedback_id, user_id, content, contact, picture, status, handler, add_time, deal_time
+    feedback_id, user_id, username, content, contact, picture, status, handler, deal_desc, 
+    add_time, deal_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lhd.user.entities.FeedbackExample" >
     select
@@ -104,14 +107,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lhd.user.entities.Feedback" >
-    insert into feedback (feedback_id, user_id, content, 
-      contact, picture, status, 
-      handler, add_time, deal_time
-      )
-    values (#{feedbackId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, 
-      #{contact,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
-      #{handler,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{dealTime,jdbcType=TIMESTAMP}
-      )
+    insert into feedback (feedback_id, user_id, username, 
+      content, contact, picture, 
+      status, handler, deal_desc, 
+      add_time, deal_time)
+    values (#{feedbackId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{handler,jdbcType=VARCHAR}, #{dealDesc,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{dealTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lhd.user.entities.Feedback" >
     insert into feedback
@@ -121,6 +124,9 @@
       </if>
       <if test="userId != null" >
         user_id,
+      </if>
+      <if test="username != null" >
+        username,
       </if>
       <if test="content != null" >
         content,
@@ -137,6 +143,9 @@
       <if test="handler != null" >
         handler,
       </if>
+      <if test="dealDesc != null" >
+        deal_desc,
+      </if>
       <if test="addTime != null" >
         add_time,
       </if>
@@ -150,6 +159,9 @@
       </if>
       <if test="userId != null" >
         #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
         #{content,jdbcType=VARCHAR},
@@ -165,6 +177,9 @@
       </if>
       <if test="handler != null" >
         #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="dealDesc != null" >
+        #{dealDesc,jdbcType=VARCHAR},
       </if>
       <if test="addTime != null" >
         #{addTime,jdbcType=TIMESTAMP},
@@ -189,6 +204,9 @@
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
       <if test="record.content != null" >
         content = #{record.content,jdbcType=VARCHAR},
       </if>
@@ -203,6 +221,9 @@
       </if>
       <if test="record.handler != null" >
         handler = #{record.handler,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dealDesc != null" >
+        deal_desc = #{record.dealDesc,jdbcType=VARCHAR},
       </if>
       <if test="record.addTime != null" >
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
@@ -219,11 +240,13 @@
     update feedback
     set feedback_id = #{record.feedbackId,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT},
+      username = #{record.username,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
       contact = #{record.contact,jdbcType=VARCHAR},
       picture = #{record.picture,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=TINYINT},
       handler = #{record.handler,jdbcType=VARCHAR},
+      deal_desc = #{record.dealDesc,jdbcType=VARCHAR},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       deal_time = #{record.dealTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -235,6 +258,9 @@
     <set >
       <if test="userId != null" >
         user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
         content = #{content,jdbcType=VARCHAR},
@@ -251,6 +277,9 @@
       <if test="handler != null" >
         handler = #{handler,jdbcType=VARCHAR},
       </if>
+      <if test="dealDesc != null" >
+        deal_desc = #{dealDesc,jdbcType=VARCHAR},
+      </if>
       <if test="addTime != null" >
         add_time = #{addTime,jdbcType=TIMESTAMP},
       </if>
@@ -263,11 +292,13 @@
   <update id="updateByPrimaryKey" parameterType="com.lhd.user.entities.Feedback" >
     update feedback
     set user_id = #{userId,jdbcType=BIGINT},
+      username = #{username,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       contact = #{contact,jdbcType=VARCHAR},
       picture = #{picture,jdbcType=VARCHAR},
       status = #{status,jdbcType=TINYINT},
       handler = #{handler,jdbcType=VARCHAR},
+      deal_desc = #{dealDesc,jdbcType=VARCHAR},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       deal_time = #{dealTime,jdbcType=TIMESTAMP}
     where feedback_id = #{feedbackId,jdbcType=BIGINT}

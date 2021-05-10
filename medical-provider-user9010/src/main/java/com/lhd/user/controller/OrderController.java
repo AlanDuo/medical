@@ -52,6 +52,12 @@ public class OrderController {
         return ResponseData.ok().putDataValue(shopOrderVO);
     }
 
+    @PutMapping("/change_status")
+    public ResponseData changeShopOrderStatus(Long orderId,Byte status){
+        boolean result=orderService.updateShopOrderStatus(orderId, status);
+        return ResponseData.ok();
+    }
+
     /**
      * ================问诊订单==============
      */

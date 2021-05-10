@@ -1,5 +1,6 @@
 package com.lhd.user.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,7 +23,7 @@ public class HealthRecordListVO {
     private String relationship;
 
     private String diagnosisName;
-
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date inTime;
 
 }

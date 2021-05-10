@@ -15,6 +15,7 @@ import java.util.Map;
 public interface OrderService {
     Map<String,Object> getShopOrderList(Long userId, Byte status);
     ShopOrderVO getShopOrderDetail(Long orderId);
+    boolean updateShopOrderStatus(Long orderId,Byte status);
     List<ConsultationOrderListVO> getConsultationOrderList(Long userId);
     PrescriptionVO getPrescriptionOfOrder(Long orderId);
 
