@@ -27,6 +27,8 @@ public class MaterialVO {
 
     private String hospital;
 
+    private String hospitalAddress;
+
     private String category;
 
     private String level;

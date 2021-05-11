@@ -1,29 +1,33 @@
 
+`	java:S112Y"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
+a
+java:S1192‹"JDefine a constant instead of duplicating this literal "dealTime" 10 times.(³Ëò›
+`	java:S112`"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºşÿÿÿÿ
 e
-java:S1192ı"IDefine a constant instead of duplicating this literal "handler" 12 times.(æïØƒûÿÿÿÿ
+java:S1192û"IDefine a constant instead of duplicating this literal "contact" 12 times.(¸òÃçùÿÿÿÿ
 _
 java:S1192³"HDefine a constant instead of duplicating this literal "userId" 10 times.(İ§‰ 
 `
-java:S1192Ã"IDefine a constant instead of duplicating this literal "addTime" 10 times.(Ç‘×
-e
-java:S1192µ"IDefine a constant instead of duplicating this literal "contact" 12 times.(¸òÃçùÿÿÿÿ
-e
-java:S1192û"IDefine a constant instead of duplicating this literal "picture" 12 times.(ÁìºÓøÿÿÿÿ
-a
-java:S1192ÿ"JDefine a constant instead of duplicating this literal "dealTime" 10 times.(³Ëò›
-`
-java:S1192ï"IDefine a constant instead of duplicating this literal "content" 12 times.(æ©Í¦
-g
-java:S1192w"LDefine a constant instead of duplicating this literal "feedbackId" 10 times.(¨æè±üÿÿÿÿ
-d
-java:S1192Á"HDefine a constant instead of duplicating this literal "status" 10 times.(Æ‹óÁùÿÿÿÿ
-`	java:S112Y"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
-`	java:S112`"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºşÿÿÿÿ
-Z	java:S112g"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
-
+java:S1192Ï"IDefine a constant instead of duplicating this literal "addTime" 10 times.(Ç‘×
 v
 java:S14889"`Immediately return this expression instead of assigning it to the temporary variable "criteria".(¶Õ¯ì
+e
+java:S1192Á"IDefine a constant instead of duplicating this literal "picture" 12 times.(ÁìºÓøÿÿÿÿ
 n
 java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÏßÉe
+e
+java:S1192Ã"IDefine a constant instead of duplicating this literal "handler" 12 times.(æïØƒûÿÿÿÿ
 o
 java:S2293H"YReplace the type specification in this constructor call with the diamond operator ("<>").(óÎ³Ù
+`
+java:S1192µ"IDefine a constant instead of duplicating this literal "content" 12 times.(æ©Í¦
+d
+java:S1192‡"HDefine a constant instead of duplicating this literal "status" 10 times.(Æ‹óÁùÿÿÿÿ
+g
+java:S1192w"LDefine a constant instead of duplicating this literal "feedbackId" 10 times.(¨æè±üÿÿÿÿ
+Z	java:S112g"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
+
+m
+java:S1192‰"JDefine a constant instead of duplicating this literal "dealDesc" 12 times.(õÙ¤³ùÿÿÿÿ8˜ÿû¨•/
+m
+java:S1192ï"JDefine a constant instead of duplicating this literal "username" 12 times.(×œÚşÿÿÿÿ8˜ÿû¨•/

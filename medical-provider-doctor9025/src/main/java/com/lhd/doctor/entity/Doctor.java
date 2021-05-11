@@ -9,6 +9,8 @@ public class Doctor {
 
     private String phone;
 
+    private String hospitalAddress;
+
     private String hospital;
 
     private String category;
@@ -55,6 +57,14 @@ public class Doctor {
 
     public void setPhone(String phone) {
         this.phone = phone == null ? null : phone.trim();
+    }
+
+    public String getHospitalAddress() {
+        return hospitalAddress;
+    }
+
+    public void setHospitalAddress(String hospitalAddress) {
+        this.hospitalAddress = hospitalAddress == null ? null : hospitalAddress.trim();
     }
 
     public String getHospital() {

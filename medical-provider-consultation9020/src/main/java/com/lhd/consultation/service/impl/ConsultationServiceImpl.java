@@ -35,7 +35,7 @@ public class ConsultationServiceImpl implements ConsultationService {
     @Override
     public List<DoctorListVO> getDoctorRecommend(String outpatient) {
         DoctorExample doctorExample=new DoctorExample();
-        doctorExample.setOrderByClause("DESC star");
+        doctorExample.setOrderByClause("star DESC");
         DoctorExample.Criteria doctorCriteria=doctorExample.createCriteria();
         if(null!=outpatient && !"".equals(outpatient)){
             doctorCriteria.andCategoryLike("%"+outpatient+"%");

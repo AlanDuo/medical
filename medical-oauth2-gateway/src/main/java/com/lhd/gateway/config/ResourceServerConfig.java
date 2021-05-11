@@ -48,8 +48,8 @@ public class ResourceServerConfig {
         http.authorizeExchange()
                 .pathMatchers(ArrayUtil.toArray(ignoreUrlsConfig.getUrls(),String.class)).permitAll()//白名单配置
                 .pathMatchers("/api/hello","/api/user/currentUser").hasRole("ADMIN")
-                .pathMatchers("/doctor/**").hasRole("DOCTOR")
-                .pathMatchers("/user/**","/consultation/**","/encyclopedias/**","/shop/**").hasRole("USER")
+                .pathMatchers("/doctor/**").hasAnyRole("DOCTOR","USER")
+                .pathMatchers("/user/**","/consultation/**","/encyclopedias/**","/shop/**").hasAnyRole("USER","DOCTOR")
                 //.anyExchange().access(authorizationManager)//鉴权管理器配置
                 .and()
                 .exceptionHandling()

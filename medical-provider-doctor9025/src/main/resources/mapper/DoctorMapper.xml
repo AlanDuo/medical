@@ -6,6 +6,7 @@
     <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="hospital_address" property="hospitalAddress" jdbcType="VARCHAR" />
     <result column="hospital" property="hospital" jdbcType="VARCHAR" />
     <result column="category" property="category" jdbcType="VARCHAR" />
     <result column="level" property="level" jdbcType="VARCHAR" />
@@ -74,8 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    doctor_id, user_id, username, phone, hospital, category, level, material, intro, 
-    qualifications, star, good_at
+    doctor_id, user_id, username, phone, hospital_address, hospital, category, level, 
+    material, intro, qualifications, star, good_at
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lhd.doctor.entity.DoctorExample" >
     select
@@ -97,14 +98,12 @@
     from doctor
     where doctor_id = #{doctorId,jdbcType=BIGINT}
   </select>
-
   <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select
     <include refid="Base_Column_List" />
     from doctor
     where user_id = #{userId,jdbcType=BIGINT}
   </select>
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from doctor
     where doctor_id = #{doctorId,jdbcType=BIGINT}
@@ -117,15 +116,15 @@
   </delete>
   <insert id="insert" parameterType="com.lhd.doctor.entity.Doctor" >
     insert into doctor (doctor_id, user_id, username, 
-      phone, hospital, category, 
-      level, material, intro, 
-      qualifications, star, good_at
-      )
+      phone, hospital_address, hospital, 
+      category, level, material, 
+      intro, qualifications, star, 
+      good_at)
     values (#{doctorId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{hospital,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
-      #{level,jdbcType=VARCHAR}, #{material,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
-      #{qualifications,jdbcType=TINYINT}, #{star,jdbcType=INTEGER}, #{goodAt,jdbcType=VARCHAR}
-      )
+      #{phone,jdbcType=VARCHAR}, #{hospitalAddress,jdbcType=VARCHAR}, #{hospital,jdbcType=VARCHAR}, 
+      #{category,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{material,jdbcType=VARCHAR}, 
+      #{intro,jdbcType=VARCHAR}, #{qualifications,jdbcType=TINYINT}, #{star,jdbcType=INTEGER}, 
+      #{goodAt,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lhd.doctor.entity.Doctor" >
     insert into doctor
@@ -141,6 +140,9 @@
       </if>
       <if test="phone != null" >
         phone,
+      </if>
+      <if test="hospitalAddress != null" >
+        hospital_address,
       </if>
       <if test="hospital != null" >
         hospital,
@@ -179,6 +181,9 @@
       </if>
       <if test="phone != null" >
         #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalAddress != null" >
+        #{hospitalAddress,jdbcType=VARCHAR},
       </if>
       <if test="hospital != null" >
         #{hospital,jdbcType=VARCHAR},
@@ -227,6 +232,9 @@
       <if test="record.phone != null" >
         phone = #{record.phone,jdbcType=VARCHAR},
       </if>
+      <if test="record.hospitalAddress != null" >
+        hospital_address = #{record.hospitalAddress,jdbcType=VARCHAR},
+      </if>
       <if test="record.hospital != null" >
         hospital = #{record.hospital,jdbcType=VARCHAR},
       </if>
@@ -262,6 +270,7 @@
       user_id = #{record.userId,jdbcType=BIGINT},
       username = #{record.username,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
+      hospital_address = #{record.hospitalAddress,jdbcType=VARCHAR},
       hospital = #{record.hospital,jdbcType=VARCHAR},
       category = #{record.category,jdbcType=VARCHAR},
       level = #{record.level,jdbcType=VARCHAR},
@@ -285,6 +294,9 @@
       </if>
       <if test="phone != null" >
         phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalAddress != null" >
+        hospital_address = #{hospitalAddress,jdbcType=VARCHAR},
       </if>
       <if test="hospital != null" >
         hospital = #{hospital,jdbcType=VARCHAR},
@@ -318,6 +330,7 @@
     set user_id = #{userId,jdbcType=BIGINT},
       username = #{username,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
+      hospital_address = #{hospitalAddress,jdbcType=VARCHAR},
       hospital = #{hospital,jdbcType=VARCHAR},
       category = #{category,jdbcType=VARCHAR},
       level = #{level,jdbcType=VARCHAR},

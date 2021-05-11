@@ -37,8 +37,12 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean registerDoctor(MaterialDTO materialDTO) {
+        long userId=materialDTO.getUserId();
+        User user=userMapper.selectByPrimaryKey(userId);
         Doctor doctor=new Doctor();
         BeanUtils.copyProperties(materialDTO,doctor);
+        doctor.setUsername(user.getUsername());
+        doctor.setPhone(user.getPhone());
         byte qualification=0;
         doctor.setQualifications(qualification);
         doctor.setStar(0);
@@ -65,7 +69,7 @@ public class UserServiceImpl implements UserService {
         Doctor doctor=doctorMapper.selectByUserId(userId);
         long doctorId=doctor.getDoctorId();
         ConsultationOrderExample orderExample=new ConsultationOrderExample();
-        orderExample.setOrderByClause("DESC order_time");
+        orderExample.setOrderByClause("order_time DESC");
         ConsultationOrderExample.Criteria criteria=orderExample.createCriteria();
         criteria.andDoctorIdEqualTo(doctorId);
         List<ConsultationOrder> orderList=consultationOrderMapper.selectByExample(orderExample);

@@ -33,15 +33,15 @@ public class PharmacyController {
     @GetMapping("/list")
     public TableVO pharmacyList(String searchName,
                                 @RequestParam(value = "page",defaultValue = "1")Integer page,
-                                @RequestParam(value = "limit",defaultValue = "1")Integer limit){
+                                @RequestParam(value = "limit",defaultValue = "20")Integer limit){
         PageHelper.startPage(page,limit);
         Map<String,Object> map=pharmacyService.pharmacyList(searchName);
         PageInfo pageInfo=(PageInfo)map.get("pageInfo");
         List<GoodsListVO> goodsList=(List<GoodsListVO>)map.get("list");
         return new TableVO(pageInfo,goodsList);
     }
-    @GetMapping("/info")
-    public ResponseData pharmacyInfo(Long goodsId){
+    @GetMapping("/info/{goodsId}")
+    public ResponseData pharmacyInfo(@PathVariable("goodsId") Long goodsId){
         UserDTO userDTO=loginUserHolder.getCurrentUser();
         Long doctorId=userDTO.getId();
         GoodsInfoVO goodsInfo=pharmacyService.getPharmacyDetail(goodsId,doctorId);

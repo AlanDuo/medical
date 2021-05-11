@@ -5,6 +5,12 @@ public class Doctor {
 
     private Long userId;
 
+    private String username;
+
+    private String phone;
+
+    private String hospitalAddress;
+
     private String hospital;
 
     private String category;
@@ -13,7 +19,13 @@ public class Doctor {
 
     private String material;
 
+    private String intro;
+
     private Byte qualifications;
+
+    private Integer star;
+
+    private String goodAt;
 
     public Long getDoctorId() {
         return doctorId;
@@ -29,6 +41,30 @@ public class Doctor {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public String getHospitalAddress() {
+        return hospitalAddress;
+    }
+
+    public void setHospitalAddress(String hospitalAddress) {
+        this.hospitalAddress = hospitalAddress == null ? null : hospitalAddress.trim();
     }
 
     public String getHospital() {
@@ -63,11 +99,35 @@ public class Doctor {
         this.material = material == null ? null : material.trim();
     }
 
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro == null ? null : intro.trim();
+    }
+
     public Byte getQualifications() {
         return qualifications;
     }
 
     public void setQualifications(Byte qualifications) {
         this.qualifications = qualifications;
+    }
+
+    public Integer getStar() {
+        return star;
+    }
+
+    public void setStar(Integer star) {
+        this.star = star;
+    }
+
+    public String getGoodAt() {
+        return goodAt;
+    }
+
+    public void setGoodAt(String goodAt) {
+        this.goodAt = goodAt == null ? null : goodAt.trim();
     }
 }
