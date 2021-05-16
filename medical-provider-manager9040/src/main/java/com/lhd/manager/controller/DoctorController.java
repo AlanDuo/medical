@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author alan
@@ -41,8 +42,9 @@ public class DoctorController {
                                  @RequestParam(value = "page",defaultValue = "1")Integer page,
                                  @RequestParam(value = "limit",defaultValue = "10")Integer limit){
         PageHelper.startPage(page,limit);
-        List<DoctorListVO> doctorListVOList=doctorService.getDoctorList(doctorName, phone, hospital, category,qualification);
-        PageInfo pageInfo=new PageInfo<>(doctorListVOList);
+        Map<String,Object> map=doctorService.getDoctorList(doctorName, phone, hospital, category,qualification);
+        PageInfo pageInfo=(PageInfo)map.get("pageInfo");
+        List<DoctorListVO> doctorListVOList=(List<DoctorListVO>)map.get("list");
         return new TableVO(pageInfo,doctorListVOList);
     }
 

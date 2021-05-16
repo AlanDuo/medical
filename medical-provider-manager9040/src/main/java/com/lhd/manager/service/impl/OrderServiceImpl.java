@@ -16,9 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * @author alan
@@ -34,9 +33,12 @@ public class OrderServiceImpl implements OrderService {
     private UserMapper userMapper;
 
     @Override
-    public List<ShopOrderListVO> getShopOrderList(String username, String goodsName, Date createStartTime, Date createEndTime) {
+    public Map<String,Object> getShopOrderList(String orderNumber, String username, String goodsName, Byte status, Date createStartTime, Date createEndTime) {
         ShopOrderExample shopOrderExample=new ShopOrderExample();
         ShopOrderExample.Criteria orderCriteria=shopOrderExample.createCriteria();
+        if(null!=orderNumber && !"".equals(orderNumber.trim())){
+            orderCriteria.andOrderNumEqualTo(Long.parseLong(orderNumber));
+        }
         if(null!=username && !"".equals(username.trim())){
             orderCriteria.andUsernameLike("%"+username+"%");
         }
@@ -49,14 +51,24 @@ public class OrderServiceImpl implements OrderService {
         if(null!=createEndTime){
             orderCriteria.andCreateTimeLessThanOrEqualTo(createEndTime);
         }
+        orderCriteria.andStatusEqualTo(status);
         List<ShopOrder> shopOrderList=shopOrderMapper.selectByExample(shopOrderExample);
+        Map<String, Object> map=new HashMap<>(2);
+        map.put("pageInfo",shopOrderList);
         List<ShopOrderListVO> shopOrderListVOList=new ArrayList<>();
         for(ShopOrder shopOrder:shopOrderList){
             ShopOrderListVO shopOrderListVO=new ShopOrderListVO();
             BeanUtils.copyProperties(shopOrder,shopOrderListVO);
+            if(shopOrder.getLogisticsNum()==null){
+                shopOrderListVO.setLogisticsNum("未发货");
+            }
+            Goods goods=goodsMapper.selectByPrimaryKey(shopOrder.getGoodsId());
+            BigDecimal totalPrice=goods.getWholesalePrice().multiply(new BigDecimal(shopOrder.getAmount()));
+            shopOrderListVO.setTotalPrice(totalPrice);
             shopOrderListVOList.add(shopOrderListVO);
         }
-        return shopOrderListVOList;
+        map.put("list",shopOrderListVOList);
+        return map;
     }
 
     @Override
@@ -91,6 +103,8 @@ public class OrderServiceImpl implements OrderService {
             if(null!=updateDTO.getLogisticsNum() && !"".equals(updateDTO.getLogisticsNum())) {
                 shopOrder.setLogisticsNum(updateDTO.getLogisticsNum());
                 shopOrder.setDeliverTime(new Date());
+                byte status=3;
+                shopOrder.setStatus(status);
             }
         }
 

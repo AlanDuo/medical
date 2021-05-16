@@ -733,8 +733,6 @@ Smedical-provider-encyclopedias9030/src/main/resources/mapper/RealTimeInfoMapper
 Qmedical-oauth2-auth/src/main/java/com/lhd/auth/controller/RegisterController.java,a\2\a2bc20956f8b9e750cab9f5bdc461824b773463d
 w
 Gmedical-oauth2-auth/src/main/java/com/lhd/auth/service/UserService.java,5\f\5f77f89b757486f72d8faa6c4c880b340a8e8fa2
-m
-=medical-provider-manager9040/src/main/resources/generator.xml,f\2\f20753741524d29add31d5705f1f2fdeea205045
 }
 Mmedical-provider-user9010/src/main/java/com/lhd/user/dto/UserRegisterDTO.java,d\6\d6ec7550c752d9e16c2fd6530eb90651c3fde56c
 |
@@ -761,3 +759,13 @@ Nmedical-provider-shop9002/src/main/java/com/lhd/shop/service/OrderService.java
 Lmedical-provider-shop9002/src/main/java/com/lhd/shop/vo/WaitToPayListVO.java,5\5\556580e257b8ddb52098702518a82df36425a93b
 v
 Fmedical-provider-user9010/src/main/resources/mapper/FeedbackMapper.xml,7\6\76e7769c8d3662b3ae16928de287024539f7617a
+v
+Fmedical-provider-doctor9025/src/main/resources/mapper/DoctorMapper.xml,6\e\6e77b17437f545fd26589ef27aef570f5778e1af
+l
+<medical-provider-doctor9025/src/main/resources/generator.xml,9\0\90808b230976f0f5cea24bf140982cedc89a585d
+j
+:medical-provider-user9010/src/main/resources/generator.xml,8\5\850426efd5fe412389496a46d9237f7334c2ae20
+{
+Kmedical-provider-manager9040/src/main/java/com/lhd/manager/dto/UserDTO.java,b\3\b31602c2b0f0cfd88c7c7136dc718a01ff2ba5f0
+‡
+Wmedical-provider-manager9040/src/main/java/com/lhd/manager/handler/LoginUserHolder.java,5\d\5d8cfad6528b713f9b84da85366a45516974d097

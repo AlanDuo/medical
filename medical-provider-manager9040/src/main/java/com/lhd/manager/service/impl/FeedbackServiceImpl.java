@@ -1,5 +1,6 @@
 package com.lhd.manager.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.lhd.manager.dao.FeedbackMapper;
 import com.lhd.manager.entity.Feedback;
 import com.lhd.manager.entity.FeedbackExample;
@@ -10,9 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author alan
@@ -24,7 +23,7 @@ public class FeedbackServiceImpl implements FeedbackService {
     private FeedbackMapper feedbackMapper;
 
     @Override
-    public List<FeedbackListVO> getFeedbackList(String username, String question) {
+    public Map<String,Object> getFeedbackList(String username, String question, Byte status) {
         FeedbackExample feedbackExample=new FeedbackExample();
         FeedbackExample.Criteria feedbackCriteria=feedbackExample.createCriteria();
         if(null!=username && !"".equals(username)){
@@ -33,14 +32,25 @@ public class FeedbackServiceImpl implements FeedbackService {
         if(null!=question && !"".equals(question.trim())){
             feedbackCriteria.andContentLike("%"+question+"%");
         }
+        feedbackCriteria.andStatusEqualTo(status);
         List<Feedback> feedbackList=feedbackMapper.selectByExample(feedbackExample);
+        Map<String, Object> map=new HashMap<>(2);
+        PageInfo pageInfo=new PageInfo<>(feedbackList);
+
         List<FeedbackListVO> feedbackListVOList=new ArrayList<>();
         for(Feedback feedback:feedbackList){
             FeedbackListVO feedbackListVO=new FeedbackListVO();
             BeanUtils.copyProperties(feedback,feedbackListVO);
             feedbackListVOList.add(feedbackListVO);
         }
-        return feedbackListVOList;
+        map.put("pageInfo",pageInfo);
+        map.put("list",feedbackListVOList);
+        return map;
+    }
+
+    @Override
+    public Feedback getFeedbackDetail(Long feedbackId) {
+        return feedbackMapper.selectByPrimaryKey(feedbackId);
     }
 
     @Override
@@ -49,6 +59,8 @@ public class FeedbackServiceImpl implements FeedbackService {
         Feedback feedback=feedbackMapper.selectByPrimaryKey(feedbackId);
         feedback.setHandler(handler);
         feedback.setDealDesc(dealDesc);
+        byte status=1;
+        feedback.setStatus(status);
         feedback.setDealTime(new Date());
 
         return feedbackMapper.updateByPrimaryKey(feedback)>0;

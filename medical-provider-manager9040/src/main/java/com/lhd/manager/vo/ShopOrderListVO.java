@@ -2,6 +2,7 @@ package com.lhd.manager.vo;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -19,6 +20,10 @@ public class ShopOrderListVO {
     private Long goodsId;
 
     private String goodsName;
+
+    private Integer amount;
+
+    private BigDecimal totalPrice;
 
     private Long userId;
 

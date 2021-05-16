@@ -71,5 +71,4 @@ secure:
       - "/actuator/**"
       - "/auth/oauth/**"
       - "/user/user/register"
-      - "/manager/**"
       - "/common/**"

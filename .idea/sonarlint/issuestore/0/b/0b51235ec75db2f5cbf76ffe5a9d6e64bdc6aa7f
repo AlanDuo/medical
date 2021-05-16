@@ -1,33 +1,35 @@
 
-f
-java:S1192À"JDefine a constant instead of duplicating this literal "category" 12 times.(Á•Ï¤şÿÿÿÿ
+g
+java:S1192"PDefine a constant instead of duplicating this literal "qualifications" 10 times.(ã³ªí
 _
 java:S1192²"HDefine a constant instead of duplicating this literal "userId" 10 times.(İ§‰ 
-g
-java:S1192Ø"PDefine a constant instead of duplicating this literal "qualifications" 10 times.(ã³ªí
+Z	java:S112f"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
+
+f
+java:S1192’"JDefine a constant instead of duplicating this literal "material" 12 times.(Œß˜ÿùÿÿÿÿ
+`	java:S112X"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
+o
+java:S2293G"YReplace the type specification in this constructor call with the diamond operator ("<>").(óÎ³Ù
 ^
-java:S1192†"GDefine a constant instead of duplicating this literal "level" 12 times.(îîöÜ
+java:S1192Ì"GDefine a constant instead of duplicating this literal "level" 12 times.(îîöÜ
+c
+java:S1192´"GDefine a constant instead of duplicating this literal "phone" 12 times.(ºÔñŠÿÿÿÿÿ
+v
+java:S14888"`Immediately return this expression instead of assigning it to the temporary variable "criteria".(¶Õ¯ì
 e
 java:S1192v"JDefine a constant instead of duplicating this literal "doctorId" 10 times.(‡¼áıÿÿÿÿ
 f
-java:S1192Ì"JDefine a constant instead of duplicating this literal "material" 12 times.(Œß˜ÿùÿÿÿÿ
-c
-java:S1192´"GDefine a constant instead of duplicating this literal "phone" 12 times.(ºÔñŠÿÿÿÿÿ
-d
-java:S1192Ğ"HDefine a constant instead of duplicating this literal "goodAt" 12 times.(Ö–èïşÿÿÿÿ
-c
-java:S1192’"GDefine a constant instead of duplicating this literal "intro" 12 times.(Şê®ûûÿÿÿÿ
-f
 java:S1192î"JDefine a constant instead of duplicating this literal "username" 12 times.(×œÚşÿÿÿÿ
-a
-java:S1192ú"JDefine a constant instead of duplicating this literal "hospital" 12 times.(Úãÿô
-`	java:S112X"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
+d
+java:S1192–"HDefine a constant instead of duplicating this literal "goodAt" 12 times.(Ö–èïşÿÿÿÿ
+c
+java:S1192Ø"GDefine a constant instead of duplicating this literal "intro" 12 times.(Şê®ûûÿÿÿÿ
 `	java:S112_"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºşÿÿÿÿ
-Z	java:S112f"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
-
-v
-java:S14888"`Immediately return this expression instead of assigning it to the temporary variable "criteria".(¶Õ¯ì
 n
 java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÏßÉe
+a
+java:S1192À"JDefine a constant instead of duplicating this literal "hospital" 12 times.(Úãÿô
+f
+java:S1192†"JDefine a constant instead of duplicating this literal "category" 12 times.(Á•Ï¤şÿÿÿÿ
 o
-java:S2293G"YReplace the type specification in this constructor call with the diamond operator ("<>").(óÎ³Ù
+java:S1192ú"QDefine a constant instead of duplicating this literal "hospitalAddress" 12 times.(÷ÑÜ8ÇÎ»Ô•/

@@ -21,6 +21,4 @@ public class ShopOrderUpdateDTO {
     private String logisticsNum;
 
     private Byte operate;
-
-    private Date deliverTime;
 }

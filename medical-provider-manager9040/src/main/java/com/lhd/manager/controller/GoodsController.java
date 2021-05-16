@@ -70,6 +70,7 @@ public class GoodsController {
      */
     @PostMapping("/publish")
     public ResponseData goodsPublish(Long goodsId,String price){
+        System.out.println("goodsId: "+goodsId+",price: "+price);
         boolean result=goodsService.publishGoods(goodsId,price);
         if(result){
             return ResponseData.ok();

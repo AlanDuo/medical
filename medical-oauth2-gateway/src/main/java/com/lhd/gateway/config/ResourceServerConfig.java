@@ -19,6 +19,7 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtAuthenticationConverterAdapter;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.web.filter.reactive.HiddenHttpMethodFilter;
 import reactor.core.publisher.Mono;
 
 /**
@@ -36,6 +37,7 @@ public class ResourceServerConfig {
     private final RestfulAccessDeniedHandler restfulAccessDeniedHandler;
     private final RestAuthenticationEntryPoint restAuthenticationEntryPoint;
     private final IgnoreUrlsRemoveJwtFilter ignoreUrlsRemoveJwtFilter;
+    //private final HiddenHttpMethodFilter hiddenHttpMethodFilter;
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
@@ -47,9 +49,9 @@ public class ResourceServerConfig {
         http.addFilterBefore(ignoreUrlsRemoveJwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);
         http.authorizeExchange()
                 .pathMatchers(ArrayUtil.toArray(ignoreUrlsConfig.getUrls(),String.class)).permitAll()//白名单配置
-                .pathMatchers("/api/hello","/api/user/currentUser").hasRole("ADMIN")
+                .pathMatchers("/api/hello","/api/user/currentUser","/manager/**").hasRole("ADMIN")
                 .pathMatchers("/doctor/**").hasAnyRole("DOCTOR","USER")
-                .pathMatchers("/user/**","/consultation/**","/encyclopedias/**","/shop/**").hasAnyRole("USER","DOCTOR")
+                .pathMatchers("/user/**","/consultation/**","/encyclopedias/**","/shop/**").hasAnyRole("USER","DOCTOR","ADMIN")
                 //.anyExchange().access(authorizationManager)//鉴权管理器配置
                 .and()
                 .exceptionHandling()

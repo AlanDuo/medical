@@ -14,7 +14,7 @@ public class DoctorListVO {
 
     private String phone;
 
-    private Byte gender;
+    private String idCard;
 
     private String hospital;
 
@@ -22,7 +22,7 @@ public class DoctorListVO {
 
     private String level;
 
-    private Byte qualifications;
+    private String qualifications;
 
     private Integer star;
 }

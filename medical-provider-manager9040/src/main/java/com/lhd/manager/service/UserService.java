@@ -1,5 +1,6 @@
 package com.lhd.manager.service;
 
+import com.lhd.manager.entity.User;
 import com.lhd.manager.vo.UserListVO;
 
 import java.util.List;
@@ -10,4 +11,5 @@ import java.util.List;
  */
 public interface UserService {
     List<UserListVO> getUserList(String phone,String username);
+    User getUserById(Long userId);
 }
