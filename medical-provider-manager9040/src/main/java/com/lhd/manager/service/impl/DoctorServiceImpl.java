@@ -87,7 +87,7 @@ public class DoctorServiceImpl implements DoctorService {
     public boolean updateDoctorQualification(Long doctorId, Byte qualification) {
         Doctor doctor=doctorMapper.selectByPrimaryKey(doctorId);
         doctor.setQualifications(qualification);
-        return doctorMapper.insertSelective(doctor)>0;
+        return doctorMapper.updateByPrimaryKeySelective(doctor)>0;
     }
 
 }
