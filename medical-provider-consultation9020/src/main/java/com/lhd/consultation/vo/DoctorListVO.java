@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 public class DoctorListVO {
     private Long doctorId;
 
+    private Long userId;
+
     private String userImg;
 
     private String username;
@@ -22,7 +24,7 @@ public class DoctorListVO {
 
     private String level;
 
-    private String goodsAt;
+    private String goodAt;
 
     private Integer star;
 }

@@ -769,8 +769,6 @@ j
 Kmedical-provider-manager9040/src/main/java/com/lhd/manager/dto/UserDTO.java,b\3\b31602c2b0f0cfd88c7c7136dc718a01ff2ba5f0
 á
 Wmedical-provider-manager9040/src/main/java/com/lhd/manager/handler/LoginUserHolder.java,5\d\5d8cfad6528b713f9b84da85366a45516974d097
-i
-9medical-oauth2-gateway/src/main/resources/application.yml,4\d\4d9f99e9d63231428282a38b343c8127591b43da
 m
 =medical-provider-manager9040/src/main/resources/generator.xml,f\2\f20753741524d29add31d5705f1f2fdeea205045
 ä
@@ -785,3 +783,7 @@ Kmedical-provider-manager9040/src/main/java/com/lhd/manager/vo/ProfitVO.java,c\
 dmedical-provider-manager9040/src/main/java/com/lhd/manager/service/impl/DataAnalysisServiceImpl.java,1\e\1e00af0c80ad47184ce091ae4d8eb9676368e120
 ë
 amedical-provider-manager9040/src/main/java/com/lhd/manager/controller/DataAnalysisController.java,9\0\909bfb0fe3755c417d60160c3f95002ed4d677ca
+ç
+]medical-provider-consultation9020/src/main/java/com/lhd/consultation/service/ChatService.java,2\d\2deb845a83ec958ce51f7ceb84aeff4198c2271a
+ñ
+fmedical-provider-consultation9020/src/main/java/com/lhd/consultation/service/impl/ChatServiceImpl.java,e\7\e72f1baeb831f7a138d5fbba6f737193f4bc71c5

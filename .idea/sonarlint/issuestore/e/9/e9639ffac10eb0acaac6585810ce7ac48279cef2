@@ -1,19 +1,13 @@
 
+S
+java:S2696"6Make the enclosing method "static" or remove this set.(âîè–8‡Ïáë—/
+o
+java:S37762"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(Ê‘—í8©‚¤ò—/
+Z	java:S106L"9Replace this use of System.out or System.err by a logger.(¹Ğ—üÿÿÿÿ8©‚¤ò—/
+X	java:S125@"<This block of commented-out lines of code should be removed.(ùùú°8ºğœò—/
+g
+java:S32524"EUse static access with "com.alibaba.fastjson.JSON" for "parseObject".(ñ¨Û¡ıÿÿÿÿ8¿¨’ò—/
 M
-java:S1068"+Remove this unused "session" private field.(ÔÂòáÿÿÿÿÿ8œ¶šÓŒ/
-R
-java:S1068!"0Remove this unused "doctorClient" private field.(½øØ›şÿÿÿÿ8¤ª˜ÓŒ/
-X	java:S125"<This block of commented-out lines of code should be removed.(¥òú8¥™–ÓŒ/
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8áˆ›ÓŒ/
-P
-java:S1068 ".Remove this unused "userClient" private field.(î«Õ‹úÿÿÿÿ8«ë—ÓŒ/
-]	java:S125"<This block of commented-out lines of code should be removed.(ùÛ®Àùÿÿÿÿ8¥™–ÓŒ/
-q
-java:S1450"URemove the "userId" field and declare it as a local variable in the relevant methods.(íÃË8áˆ›ÓŒ/
-F
-java:S1068"*Remove this unused "userId" private field.(íÃË8áˆ›ÓŒ/
-x
-java:S1450"VRemove the "session" field and declare it as a local variable in the relevant methods.(ÔÂòáÿÿÿÿÿ8œ¶šÓŒ/
-
-java:S1186*"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê‘—í8œ¶šÓŒ/
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8’‹³ë—/
+U	java:S106="9Replace this use of System.out or System.err by a logger.(ä°ÿà8†”œò—/
+X	java:S125O"<This block of commented-out lines of code should be removed.(ùùú°8Ù¦ò—/

@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 public class DoctorIntroVO {
     private Long doctorId;
 
+    private Long userId;
+
     private String username;
 
     private String userImg;
