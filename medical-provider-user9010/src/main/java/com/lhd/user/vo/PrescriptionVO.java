@@ -1,5 +1,6 @@
 package com.lhd.user.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -35,6 +36,7 @@ public class PrescriptionVO {
 
     private BigDecimal money;
 
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date orderTime;
 
     private String diagnosisResult;

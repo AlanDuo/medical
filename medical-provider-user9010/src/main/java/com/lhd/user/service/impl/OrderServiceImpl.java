@@ -14,10 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author alan
@@ -47,7 +44,14 @@ public class OrderServiceImpl implements OrderService {
         orderExample.setOrderByClause("create_time DESC");
         ShopOrderExample.Criteria orderCriteria=orderExample.createCriteria();
         orderCriteria.andUserIdEqualTo(userId);
-        orderCriteria.andStatusEqualTo(status);
+        if(status==5){
+            byte status1=2;
+            byte status2=3;
+            orderCriteria.andStatusGreaterThanOrEqualTo(status1);
+            orderCriteria.andStatusLessThanOrEqualTo(status2);
+        }else {
+            orderCriteria.andStatusEqualTo(status);
+        }
         List<ShopOrder> shopOrderList=shopOrderMapper.selectByExample(orderExample);
         Map<String,Object> map=new HashMap<>();
         PageInfo pageInfo=new PageInfo<>(shopOrderList);
@@ -88,6 +92,8 @@ public class OrderServiceImpl implements OrderService {
     public boolean updateShopOrderStatus(Long orderId, Byte status) {
         ShopOrder shopOrder=shopOrderMapper.selectByPrimaryKey(orderId);
         shopOrder.setStatus(status);
+        shopOrder.setReceiveTime(new Date());
+        shopOrder.setFinishTime(new Date());
         return shopOrderMapper.updateByPrimaryKeySelective(shopOrder)>0;
     }
 

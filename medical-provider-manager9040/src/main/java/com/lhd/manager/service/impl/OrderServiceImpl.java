@@ -1,5 +1,6 @@
 package com.lhd.manager.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.lhd.manager.dao.GoodsMapper;
 import com.lhd.manager.dao.ShopOrderMapper;
 import com.lhd.manager.dao.UserMapper;
@@ -54,7 +55,8 @@ public class OrderServiceImpl implements OrderService {
         orderCriteria.andStatusEqualTo(status);
         List<ShopOrder> shopOrderList=shopOrderMapper.selectByExample(shopOrderExample);
         Map<String, Object> map=new HashMap<>(2);
-        map.put("pageInfo",shopOrderList);
+        PageInfo pageInfo=new PageInfo<>(shopOrderList);
+        map.put("pageInfo",pageInfo);
         List<ShopOrderListVO> shopOrderListVOList=new ArrayList<>();
         for(ShopOrder shopOrder:shopOrderList){
             ShopOrderListVO shopOrderListVO=new ShopOrderListVO();

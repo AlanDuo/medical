@@ -38,7 +38,7 @@ public class OrderController {
 
     @GetMapping("/shopOrderList/{status}")
     public TableVO shopOrderList(@PathVariable("status") Byte status,@RequestParam(value = "page",defaultValue = "1") Integer page,
-                                 @RequestParam(value = "page",defaultValue = "20") Integer limit){
+                                 @RequestParam(value = "limit",defaultValue = "20") Integer limit){
         Long userId=loginUserHolder.getCurrentUser().getId();
         PageHelper.startPage(page,limit);
         Map<String,Object> map=orderService.getShopOrderList(userId,status);
@@ -63,7 +63,7 @@ public class OrderController {
      */
     @GetMapping("/consultationOrderList")
     public TableVO consultationOrderList(Long userId,@RequestParam(value = "page",defaultValue = "1") Integer page,
-                                              @RequestParam(value = "page",defaultValue = "20") Integer limit){
+                                              @RequestParam(value = "limit",defaultValue = "20") Integer limit){
         PageHelper.startPage(page,limit);
         List<ConsultationOrderListVO> orderListVOList=orderService.getConsultationOrderList(userId);
         PageInfo pageInfo=new PageInfo<>(orderListVOList);

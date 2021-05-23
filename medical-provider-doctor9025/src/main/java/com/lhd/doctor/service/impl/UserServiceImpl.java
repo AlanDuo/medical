@@ -1,6 +1,5 @@
 package com.lhd.doctor.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
 import com.lhd.doctor.dao.ConsultationOrderMapper;
 import com.lhd.doctor.dao.DoctorMapper;
 import com.lhd.doctor.dao.PrescriptionMapper;
@@ -39,14 +38,25 @@ public class UserServiceImpl implements UserService {
     public boolean registerDoctor(MaterialDTO materialDTO) {
         long userId=materialDTO.getUserId();
         User user=userMapper.selectByPrimaryKey(userId);
-        Doctor doctor=new Doctor();
-        BeanUtils.copyProperties(materialDTO,doctor);
-        doctor.setUsername(user.getUsername());
-        doctor.setPhone(user.getPhone());
-        byte qualification=0;
-        doctor.setQualifications(qualification);
-        doctor.setStar(0);
-        return doctorMapper.insertSelective(doctor)>0;
+
+        Doctor doctor=doctorMapper.selectByUserId(userId);
+        if(null==doctor) {
+            BeanUtils.copyProperties(materialDTO, doctor);
+            doctor.setUsername(user.getUsername());
+            doctor.setPhone(user.getPhone());
+            byte qualification = 0;
+            doctor.setQualifications(qualification);
+            doctor.setStar(0);
+            return doctorMapper.insertSelective(doctor) > 0;
+        } else{
+            BeanUtils.copyProperties(materialDTO, doctor);
+            doctor.setUsername(user.getUsername());
+            doctor.setPhone(user.getPhone());
+            byte qualification = 0;
+            doctor.setQualifications(qualification);
+            doctor.setStar(0);
+            return doctorMapper.updateByPrimaryKeySelective(doctor)>0;
+        }
     }
 
     @Override

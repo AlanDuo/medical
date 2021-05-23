@@ -1,13 +1,13 @@
 
+X	java:S125@"<This block of commented-out lines of code should be removed.(ùùú°8ºğœò—/
+Z	java:S106L"9Replace this use of System.out or System.err by a logger.(¹Ğ—üÿÿÿÿ8©‚¤ò—/
+X	java:S125O"<This block of commented-out lines of code should be removed.(ùùú°8Ù¦ò—/
 S
 java:S2696"6Make the enclosing method "static" or remove this set.(âîè–8‡Ïáë—/
 o
 java:S37762"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(Ê‘—í8©‚¤ò—/
-Z	java:S106L"9Replace this use of System.out or System.err by a logger.(¹Ğ—üÿÿÿÿ8©‚¤ò—/
-X	java:S125@"<This block of commented-out lines of code should be removed.(ùùú°8ºğœò—/
+U	java:S106="9Replace this use of System.out or System.err by a logger.(ä°ÿà8†”œò—/
 g
 java:S32524"EUse static access with "com.alibaba.fastjson.JSON" for "parseObject".(ñ¨Û¡ıÿÿÿÿ8¿¨’ò—/
 M
 java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8’‹³ë—/
-U	java:S106="9Replace this use of System.out or System.err by a logger.(ä°ÿà8†”œò—/
-X	java:S125O"<This block of commented-out lines of code should be removed.(ùùú°8Ù¦ò—/

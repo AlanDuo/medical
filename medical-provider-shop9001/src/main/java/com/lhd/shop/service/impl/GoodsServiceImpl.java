@@ -34,6 +34,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public Map<String,Object> indexGoodsList(String searchName, Long userId) {
         GoodsExample goodsExample=new GoodsExample();
+        goodsExample.setOrderByClause("weight DESC");
         //GoodsExample.Criteria goodsCriteria=goodsExample.createCriteria();
         if(null!=searchName && !"".equals(searchName.trim())){
             goodsExample.or().andGoodsNameLike("%"+searchName+"%");

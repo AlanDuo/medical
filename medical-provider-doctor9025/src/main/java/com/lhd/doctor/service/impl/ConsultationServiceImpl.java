@@ -2,9 +2,11 @@ package com.lhd.doctor.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
 import com.lhd.doctor.dao.ConsultationOrderMapper;
+import com.lhd.doctor.dao.DoctorMapper;
 import com.lhd.doctor.dao.PrescriptionMapper;
 import com.lhd.doctor.dto.PrescriptionDTO;
 import com.lhd.doctor.entity.ConsultationOrder;
+import com.lhd.doctor.entity.Doctor;
 import com.lhd.doctor.entity.Prescription;
 import com.lhd.doctor.service.ConsultationService;
 import org.springframework.beans.BeanUtils;
@@ -24,10 +26,13 @@ public class ConsultationServiceImpl implements ConsultationService {
     private ConsultationOrderMapper orderMapper;
     @Resource
     private PrescriptionMapper prescriptionMapper;
+    @Resource
+    private DoctorMapper doctorMapper;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean addPrescription(PrescriptionDTO prescriptionDTO) {
+        Doctor doctor=doctorMapper.selectByUserId(prescriptionDTO.getDoctorId());
         //先产生咨询订单，再添加处方
         ConsultationOrder consultationOrder=new ConsultationOrder();
         String numbers= RandomUtil.randomString("123456789",6);
@@ -37,10 +42,12 @@ public class ConsultationServiceImpl implements ConsultationService {
         consultationOrder.setDoctorId(prescriptionDTO.getDoctorId());
         consultationOrder.setMoney(prescriptionDTO.getMoney());
         consultationOrder.setOrderTime(new Date());
+        consultationOrder.setDoctorId(doctor.getDoctorId());
         orderMapper.insert(consultationOrder);
         Prescription prescription=new Prescription();
         BeanUtils.copyProperties(prescriptionDTO,prescription);
         prescription.setOrderId(orderId);
+        prescription.setDoctorId(doctor.getDoctorId());
         return prescriptionMapper.insertSelective(prescription)>0;
     }
 }

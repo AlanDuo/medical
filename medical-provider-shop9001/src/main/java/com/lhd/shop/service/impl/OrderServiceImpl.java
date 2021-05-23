@@ -79,7 +79,7 @@ public class OrderServiceImpl implements OrderService {
         BeanUtils.copyProperties(orderAddDTO,shopOrder);
         shopOrder.setCreateTime(new Date());
         shopOrder.setPayTime(new Date());
-        byte status=1;
+        byte status=2;
         shopOrder.setStatus(status);
         redisTemplate.opsForHash().delete(WAIT_TO_PAY + orderAddDTO.getUserId(), GOODS_ID + orderAddDTO.getGoodsId());
         return orderMapper.insertSelective(shopOrder)>0;

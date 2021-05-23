@@ -36,7 +36,8 @@ public class HealthController {
      *=============处方============
      */
     @GetMapping("/prescriptionList")
-    public ResponseData prescriptionList(Long userId){
+    public ResponseData prescriptionList(){
+        Long userId=loginUserHolder.getCurrentUser().getId();
         List<PrescriptionListVO> prescriptionListVOList= healthService.getPrescriptionList(userId);
         return ResponseData.ok().putDataValue(prescriptionListVOList);
     }

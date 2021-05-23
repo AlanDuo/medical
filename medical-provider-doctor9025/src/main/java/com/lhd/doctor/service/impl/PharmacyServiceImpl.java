@@ -34,6 +34,7 @@ public class PharmacyServiceImpl implements PharmacyService {
     @Override
     public Map<String, Object> pharmacyList(String searchName) {
         GoodsExample goodsExample=new GoodsExample();
+        goodsExample.setOrderByClause("weight DESC");
         if(null!=searchName && !"".equals(searchName.trim())){
             goodsExample.or().andGoodsNameLike("%"+searchName+"%");
             goodsExample.or().andGoodsTypeLike("%"+searchName+"%");
