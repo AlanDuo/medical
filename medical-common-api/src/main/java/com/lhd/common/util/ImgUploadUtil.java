@@ -32,7 +32,8 @@ public class ImgUploadUtil {
             return false;
         }
         String path=request.getContextPath();
-        String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
+        //String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
+        String basePath=request.getScheme()+"://192.168.43.50:"+request.getServerPort()+path;
 
         Long time=System.currentTimeMillis();
         String originalFileName=time.toString().substring(time.toString().length()-8,time.toString().length());

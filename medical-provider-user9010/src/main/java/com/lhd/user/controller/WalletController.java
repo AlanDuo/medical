@@ -38,7 +38,7 @@ public class WalletController {
     }
     @PostMapping("/chargeWallet")
     public ResponseData chargeWallet(Long userId,BigDecimal money,String purpose){
-        walletService.chargeWallet(userId,money,purpose);
-        return ResponseData.ok();
+        BigDecimal wallet=walletService.chargeWallet(userId,money,purpose);
+        return ResponseData.ok().putDataValue(wallet);
     }
 }

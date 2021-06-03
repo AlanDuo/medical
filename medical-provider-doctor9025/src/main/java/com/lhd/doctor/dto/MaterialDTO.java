@@ -14,6 +14,8 @@ public class MaterialDTO {
 
     private String phone;
 
+    private String hospitalAddress;
+
     private String hospital;
 
     private String category;

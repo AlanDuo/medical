@@ -41,7 +41,8 @@ public class UserServiceImpl implements UserService {
 
         Doctor doctor=doctorMapper.selectByUserId(userId);
         if(null==doctor) {
-            BeanUtils.copyProperties(materialDTO, doctor);
+            doctor=new Doctor();
+            BeanUtils.copyProperties(materialDTO,doctor);
             doctor.setUsername(user.getUsername());
             doctor.setPhone(user.getPhone());
             byte qualification = 0;

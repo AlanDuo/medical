@@ -699,8 +699,6 @@ Wmedical-provider-doctor9025/src/main/java/com/lhd/doctor/entity/DoctorAgreeExam
 Umedical-provider-doctor9025/src/main/java/com/lhd/doctor/handler/LoginUserHolder.java,2\e\2e4f48e97e7c14418427413d7e989f7ecf205e07
 {
 Kmedical-provider-doctor9025/src/main/resources/mapper/DoctorAgreeMapper.xml,6\d\6d88b47f18bab67e015c851b0d691eb6ec56a229
-j
-:medical-provider-shop9001/src/main/resources/generator.xml,e\b\ebb760a75c003290ca19efe545fee33c951eb545
 Å
 Qmedical-provider-doctor9025/src/main/java/com/lhd/doctor/dto/PrescriptionDTO.java,8\8\88790e832b9275edefd8aed514f0960e23b18b7f
 è

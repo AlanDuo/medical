@@ -48,7 +48,12 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean chargeWallet(Long userId, BigDecimal money, String purpose) {
+    public BigDecimal chargeWallet(Long userId, BigDecimal money, String purpose) {
+        User user=userMapper.selectByPrimaryKey(userId);
+        BigDecimal wallet=user.getWallet().add(money);
+        user.setWallet(wallet);
+        userMapper.updateByPrimaryKeySelective(user);
+
         Bill bill=new Bill();
         bill.setUserId(userId);
         bill.setPurpose(purpose);
@@ -56,7 +61,9 @@ public class WalletServiceImpl implements WalletService {
         bill.setBillTime(new Date());
         byte flag=1;
         bill.setIntOrOut(flag);
-        return billMapper.insertSelective(bill)>0;
+        billMapper.insertSelective(bill);
+
+        return wallet;
     }
 
 }

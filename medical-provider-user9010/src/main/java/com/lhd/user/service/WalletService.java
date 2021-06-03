@@ -12,5 +12,5 @@ import java.util.List;
 public interface WalletService {
     BigDecimal getUserWallet(Long userId);
     List<Bill> getUserBill(Long userId);
-    boolean chargeWallet(Long userId,BigDecimal money,String purpose);
+    BigDecimal chargeWallet(Long userId,BigDecimal money,String purpose);
 }

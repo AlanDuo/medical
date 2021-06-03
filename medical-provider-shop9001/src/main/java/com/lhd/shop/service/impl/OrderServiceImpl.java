@@ -1,12 +1,16 @@
 package com.lhd.shop.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
+import com.lhd.shop.dao.BillMapper;
 import com.lhd.shop.dao.GoodsMapper;
 import com.lhd.shop.dao.ShopOrderMapper;
+import com.lhd.shop.dao.UserMapper;
 import com.lhd.shop.dto.OrderAddDTO;
 import com.lhd.shop.dto.OrderUpdateDTO;
+import com.lhd.shop.entities.Bill;
 import com.lhd.shop.entities.Goods;
 import com.lhd.shop.entities.ShopOrder;
+import com.lhd.shop.entities.User;
 import com.lhd.shop.service.OrderService;
 import com.lhd.shop.vo.ShopCartVO;
 import com.lhd.shop.vo.WaitToPayListVO;
@@ -18,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,6 +40,10 @@ public class OrderServiceImpl implements OrderService {
     private GoodsMapper goodsMapper;
     @Resource
     private RedisTemplate redisTemplate;
+    @Resource
+    private UserMapper userMapper;
+    @Resource
+    private BillMapper billMapper;
 
     public static final String WAIT_TO_PAY="waitToPay";
     public static final String GOODS_ID="goodsId";
@@ -75,6 +84,26 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean addOrder(OrderAddDTO orderAddDTO) {
+        Goods goods=goodsMapper.selectByPrimaryKey(orderAddDTO.getGoodsId());
+        //扣减库存
+        goods.setStock(goods.getStock()-orderAddDTO.getAmount());
+        goodsMapper.updateByPrimaryKeySelective(goods);
+
+        BigDecimal totalPrice = goods.getWholesalePrice().multiply(new BigDecimal(orderAddDTO.getAmount()));
+        User user=userMapper.selectByPrimaryKey(orderAddDTO.getUserId());
+        //扣减余额
+        user.setWallet(user.getWallet().subtract(totalPrice));
+        userMapper.updateByPrimaryKeySelective(user);
+        //生成账单
+        Bill bill=new Bill();
+        bill.setUserId(orderAddDTO.getUserId());
+        bill.setPurpose("支付");
+        bill.setMoney(totalPrice);
+        bill.setBillTime(new Date());
+        byte flag=2;
+        bill.setIntOrOut(flag);
+        billMapper.insertSelective(bill);
+
         ShopOrder shopOrder=new ShopOrder();
         BeanUtils.copyProperties(orderAddDTO,shopOrder);
         shopOrder.setCreateTime(new Date());
